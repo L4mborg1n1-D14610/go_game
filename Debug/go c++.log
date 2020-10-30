@@ -1,0 +1,15 @@
+﻿  Button.cpp
+c:\users\василий\source\repos\go c++\button.cpp(16): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+c:\users\василий\source\repos\go c++\button.cpp(18): warning C4244: аргумент: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+c:\users\василий\source\repos\go c++\button.cpp(19): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+  Source.cpp
+c:\users\василий\source\repos\go c++\table.hpp(25): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+c:\users\василий\source\repos\go c++\source.cpp(15): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+  Table.cpp
+c:\users\василий\source\repos\go c++\table.hpp(25): warning C4244: аргумент: преобразование "double" в "float", возможна потеря данных
+  Создание кода...
+  go c++.vcxproj -> C:\Users\Василий\source\repos\go c++\Debug\go c++.exe
