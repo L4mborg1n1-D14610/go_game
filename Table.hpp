@@ -1,32 +1,29 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-class Table
-{
+
+#include "math_functions.hpp"
+
+class Table {
 private:
     double x_t;
     double y_t;
-    int tablesize;
+    int tablesize; //9x9/13x19/19x19
     sf::Texture tableimage;
     sf::Sprite tablesprite;
+    sf::Sprite Tablestone_sprite;  //спрайт камня
+protected:
+    std::vector<int> doats_coordinate_x; //координаты пересечений на доске
+    std::vector<int> doats_coordinate_y;
+    std::pair<int, int> Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table&& table) const; //возвращает координату камня, зависящую от координаты курсора
+    std::pair<int, int> Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table& table) const;
 public:
-    Table(double _x_t, double _y_t, int _tablesize) {
-        x_t = _x_t;
-        y_t = _y_t;
-        tablesize = _tablesize;
-        switch (tablesize) {
-        case 1:
-            tableimage.loadFromFile("Images/smalltable.png");
-        case 2:
-            tableimage.loadFromFile("Images/mediumtable.png");
-        case 3:
-            tableimage.loadFromFile("Images/bigtable.png");
-        }
-        tablesprite.setTexture(tableimage);
-        tablesprite.setPosition(x_t, y_t);
-    }
-    sf::Sprite displaytablesprite() {
-        return tablesprite;
-    }
+    Table(int& _tablesize);
+    Table();
+    int return_tablesize() const;
+    sf::Sprite displaytablesprite() const;
+    std::vector<int>::iterator return_iter_x();
+    std::vector<int>::iterator return_iter_y();
+    bool checkStoneCursor(sf::Vector2i _mouse); //проверяет, находится ли курсор в области, доступной для создания камня
 };
 
 

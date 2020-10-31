@@ -9,12 +9,12 @@ protected:
     int text_size;
     sf::Text text;
     sf::Font font;
-    sf::RectangleShape box;	// Создаем прямоугольник с размером width, height
+    sf::RectangleShape box;	// Создаем прямоугольник
 public:
     Button(double _x_t, double _y_t, std::string _text, int _text_size);
-    bool ifpress(sf::Vector2i _mouse);
-    sf::RectangleShape displayButton();
-    sf::Text displayText();
+    bool ifpress(sf::Vector2i _mouse) const;
+    sf::RectangleShape displayButton() const;
+    sf::Text displayText() const;
     void changeTextColor();
     void changeTextColorBack();
 };

@@ -141,6 +141,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="math_functions.cpp" />
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="TableStone.cpp" />
   </ItemGroup>
@@ -150,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="MainMenu.hpp" />
+    <ClInclude Include="math_functions.hpp" />
     <ClInclude Include="Menu.hpp" />
     <ClInclude Include="Table.hpp" />
     <ClInclude Include="TableStone.hpp" />
