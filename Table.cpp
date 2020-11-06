@@ -35,6 +35,37 @@ Table::Table(int& _tablesize) {
     tablesprite.setTexture(tableimage);
     tablesprite.setPosition(x_t, y_t);
 }
+Table::Table(int&& _tablesize) {
+    x_t = 0;
+    y_t = 0;
+    tablesize = _tablesize;
+    switch (tablesize) {
+    case 1:
+        tableimage.loadFromFile("Images/smalltable.png");
+        for (auto i = 0; i < 9; ++i) {
+            doats_coordinate_x.push_back(round(115 + 77.625 * i));
+            doats_coordinate_y.push_back(round(114 + 77.625 * i));
+        }
+        break;
+    case 2:
+        tableimage.loadFromFile("Images/mediumtable.png");
+        for (auto i = 0; i < 13; ++i) {
+            doats_coordinate_x.push_back(round(83 + 56.33 * i));
+            doats_coordinate_y.push_back(round(82 + 56.33 * i));
+        }
+        break;
+    case 3:
+        tableimage.loadFromFile("Images/bigtable.png");
+        for (auto i = 0; i < 19; ++i) {
+            doats_coordinate_x.push_back(59 + 40 * i);
+            doats_coordinate_y.push_back(60 + 40 * i);
+        }
+        break;
+    default: break;
+    }
+    tablesprite.setTexture(tableimage);
+    tablesprite.setPosition(x_t, y_t);
+}
 int Table::return_tablesize() const{
     return tablesize;
 }

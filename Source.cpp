@@ -13,17 +13,19 @@
 int main()
 {
 
-				double scrX = GetSystemMetrics(SM_CXSCREEN); //оптимальные параметры окна 
-				double scrY = GetSystemMetrics(SM_CYSCREEN);
+				int scrX = GetSystemMetrics(SM_CXSCREEN); //оптимальные параметры окна 
+				int scrY = GetSystemMetrics(SM_CYSCREEN);
 				sf::RenderWindow window(sf::VideoMode(scrX, scrY), "go", sf::Style::Close);
 				window.setVerticalSyncEnabled(true); //вертикальная синхронизация окна
 				int size_table = 3;
-				Table table(size_table);
+				MainMenu menu(scrX, scrY);
+			//	Table table(size_table);
 				//std::vector<TableStone*> stones;
 				//menu(window, scrX, scrY);
-				bool color = true;
-				MainMenu menu(table);
-				while (window.isOpen())
+		//		bool color = true;
+		//		MainMenu menu(table);
+				menu.print_window(window);
+			/*	while (window.isOpen())
 				{
 								sf::Event event;
 								while (window.pollEvent(event))
@@ -42,6 +44,6 @@ int main()
 							
 								//window.draw(stone.displaystone());
 								menu.print_table(window);
-				}
+				}*/
 				return 0;
 }

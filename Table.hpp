@@ -17,8 +17,9 @@ protected:
     std::pair<int, int> Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table&& table) const; //возвращает координату камня, зависящую от координаты курсора
     std::pair<int, int> Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table& table) const;
 public:
-    Table(int& _tablesize);
     Table();
+    Table(int& _tablesize);
+    Table(int&& _tablesize);
     int return_tablesize() const;
     sf::Sprite displaytablesprite() const;
     std::vector<int>::iterator return_iter_x();

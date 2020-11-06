@@ -1,17 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <Windows.h>
-#include "Button.hpp"
 #include <iostream>
 #include <vector>
 
-double middlescreenX(double& x) {
-				double x_ = x / 2;
-				return x_;
+#include "Button.hpp"
+#include "MainMenu.hpp"
+#include "Table.hpp"
+
+int middlescreenX(int& x) {
+				return x / 2;
 }
 
-const double middlescreenY(double& y) {
-				return y / 2.;
+const int middlescreenY(int& y) {
+				return y / 2;
 }
 void if_mouse_not_on_button(Button& button, sf::RenderWindow& window, bool flag) {
 				if (flag && !button.ifpress(sf::Mouse::getPosition(window))) {
@@ -19,7 +21,7 @@ void if_mouse_not_on_button(Button& button, sf::RenderWindow& window, bool flag)
 								flag = false;
 				}
 }
-void menu(sf::RenderWindow& window, double scrX, double scrY) {
+void menu(sf::RenderWindow& window, int scrX, int scrY) {
 				Button creategame(middlescreenX(scrX), middlescreenY(scrY) / 4, "Create Game", 100); //создание кнопок главного меню
 				Button joingame(middlescreenX(scrX), middlescreenY(scrY) / 2, "Join Game", 100);
 				Button exitbutton(middlescreenX(scrX), 3 * middlescreenY(scrY) / 4, "Exit", 100);
@@ -28,6 +30,7 @@ void menu(sf::RenderWindow& window, double scrX, double scrY) {
 				Button bigboard(9 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 4, "19x19", 50);
 				Button backbutton(8 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "Back", 50);
 				std::vector <bool> colorflags;
+				int board_size;
 				for (auto i = 0; i < 7; ++i) {
 								colorflags.push_back(false);
 				}
@@ -76,21 +79,24 @@ void menu(sf::RenderWindow& window, double scrX, double scrY) {
 												if (smallboard.ifpress(sf::Mouse::getPosition(window))) {
 																smallboard.changeTextColor();
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
+																				board_size = 1;
+																				break;
 																}
 																colorflags[3] = true;
 												}
 												if (mediumboard.ifpress(sf::Mouse::getPosition(window))) {
 																mediumboard.changeTextColor();
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
+																				board_size = 2;
+																				break;
 																}
 																colorflags[4] = true;
 												}
 												if (bigboard.ifpress(sf::Mouse::getPosition(window))) {
 																bigboard.changeTextColor();
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
+																				board_size - 3;
+																				break;
 																}
 																colorflags[5] = true;
 												}
@@ -123,5 +129,28 @@ void menu(sf::RenderWindow& window, double scrX, double scrY) {
 
 
 								window.display();
+				}
+				bool color = true;
+				Table table(board_size);
+  		MainMenu menu(table);
+				while (window.isOpen())
+				{
+								sf::Event event;
+								while (window.pollEvent(event))
+								{
+												if (event.type == sf::Event::Closed) {
+																window.close();
+												}
+								}
+								//window.draw(table.displaytablesprite());
+								if (table.checkStoneCursor(sf::Mouse::getPosition(window))) {
+												menu.add_stone(new TableStone(sf::Mouse::getPosition(window), table, color));
+												//TableStone stone(sf::Mouse::getPosition(window), table, color);
+												//stones.push_back(new TableStone(sf::Mouse::getPosition(window), table, color));
+												//window.draw(stone.displaystone());
+								}
+
+								//window.draw(stone.displaystone());
+								menu.print_table(window);
 				}
 }

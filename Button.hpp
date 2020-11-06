@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+
 class Button {
 protected:
     double width;		// Ширина Кнопки
