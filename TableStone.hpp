@@ -1,8 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <vector>
-#include <map>
-
 #include "Table.hpp"
 
 class TableStone : Table {
@@ -25,4 +22,5 @@ public:
     bool check_stone();
     TableStone operator=(TableStone& _stone);
     sf::CircleShape displaystone() const; //вывод камня на экран
+    std::pair<int, int> stone_coords(Table* _table); //first - horisontal, second - vertical
 };

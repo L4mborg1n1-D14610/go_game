@@ -1,20 +1,14 @@
 #pragma once
-
-#include <SFML/Graphics.hpp>
-#include<vector>
 #include<iterator>
-
-#include "Table.hpp""
-#include "TableStone.hpp"
+#include <list>
 #include "Button.hpp"
+#include "TableStone.hpp"
 
-class MainMenu
-{
+class MainMenu {
 private:
-    std::vector<Button> buttons;
     Table* table;
-    std::vector<TableStone*> vec_real_stones;
-    // TableStone* helperstone;
+    std::list<TableStone*> list_real_stones;
+    std::list<std::pair<int, int>> list_coord_stones;
     int board_size;
     bool menu_table_flag;
     int scrX;
@@ -31,5 +25,6 @@ public:
     void print_menu(sf::RenderWindow& window); //печатаем главное меню
     void add_stone(TableStone* stone);
     void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
+    void if_delete_stones();
 };
 

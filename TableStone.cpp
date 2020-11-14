@@ -60,23 +60,6 @@ TableStone TableStone::operator=(TableStone& _stone) {
     return *this;
 }
 void TableStone::change_tablestone(sf::Vector2i&& _mouse, Table& table, bool _stone_color) {
-    /*        switch (table.return_tablesize()) {
-            case 1:
-                radius = 34;
-                size = 9;
-                break;
-            case 2:
-                radius = 25;
-                size = 13;
-                break;
-            case 3:
-                radius = 18;
-                size = 19;
-                break;
-            default: break;
-            }
-            stone_color = _stone_color;
-            stone.setRadius(radius);*/
     this->x_t = std::get<0>(Checkcoordinate(_mouse, radius, size, table));
     this->y_t = std::get<1>(Checkcoordinate(_mouse, radius, size, table));
     if (x_t && y_t) {
@@ -93,12 +76,27 @@ void TableStone::change_tablestone(sf::Vector2i&& _mouse, Table& table, bool _st
 bool TableStone::check_stone() {
     if (this->x_t == 0 || this->y_t == 0) {
         return false;
-    }
-    else {
+    } else {
         return true;
     }
 }
 sf::CircleShape TableStone::displaystone() const {
     return stone;
 };
-
+std::pair<int, int> TableStone::stone_coords(Table* _table) { //first - horisontal, second - vertical
+    std::vector<int> x_coords = _table->get_doats_coordinate_x();
+    std::vector<int> y_coords = _table->get_doats_coordinate_y();
+    int horizontal;
+    int vertical;
+    for (std::vector<int>::iterator it = x_coords.begin(); it < x_coords.end(); ++it) {
+        if (this->x_t == *it) {
+            horizontal = std::distance(x_coords.begin(), it);
+        }
+    }
+    for (std::vector<int>::iterator it = y_coords.begin(); it < y_coords.end(); ++it) {
+        if (this->y_t == *it) {
+            vertical = std::distance(y_coords.begin(), it);
+        }
+    }
+    return (std::make_pair(horizontal, vertical));
+}

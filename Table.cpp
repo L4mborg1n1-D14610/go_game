@@ -106,10 +106,6 @@ bool Table::checkStoneCursor(sf::Vector2i _mouse) {
     }
 }
 std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table&& table) const {
-    // std::vector<int>::iterator it_x = table.return_iter_x();
-    //std::vector<int>::iterator it_x = table.doats_coordinate_x.begin();
-    // std::vector<int>::iterator it_y = table.return_iter_y();
-   // std::vector<int>::iterator it_y = table.doats_coordinate_y.begin();
     for (auto it_x : table.doats_coordinate_x) {
         for (auto it_y : table.doats_coordinate_y) {
             if (_in_circle(_mouse.x, _mouse.y, radius, it_x, it_y)) {
@@ -120,10 +116,6 @@ std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, int 
     return std::make_pair(0, 0);
 }
 std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table& table) const {
-    // std::vector<int>::iterator it_x = table.return_iter_x();
-    //std::vector<int>::iterator it_x = table.doats_coordinate_x.begin();
-    // std::vector<int>::iterator it_y = table.return_iter_y();
-   // std::vector<int>::iterator it_y = table.doats_coordinate_y.begin();
     for (auto it_x : table.doats_coordinate_x) {
         for (auto it_y : table.doats_coordinate_y) {
             if (_in_circle(_mouse.x, _mouse.y, radius, it_x, it_y)) {
@@ -133,4 +125,9 @@ std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, int 
     }
     return std::make_pair(0, 0);
 }
- 
+std::vector<int> Table::get_doats_coordinate_x() {
+    return doats_coordinate_x;
+}
+std::vector<int> Table::get_doats_coordinate_y() {
+    return doats_coordinate_y;
+}
