@@ -5,7 +5,7 @@
 
 #include "Table.hpp"
 
-class TableStone : Table{
+class TableStone : Table {
 private:
     int x_t; //координаты камня
     int y_t;
@@ -18,7 +18,11 @@ private:
 protected:
 
 public:
-    TableStone(sf::Vector2i&& _mouse, Table& table, bool _stone_color); 
+    TableStone();
+    TableStone(TableStone& stone);
+    TableStone(sf::Vector2i&& _mouse, Table& table, bool _stone_color);
+    void change_tablestone(sf::Vector2i&& _mouse, Table& table, bool _stone_color);
+    bool check_stone();
+    TableStone operator=(TableStone& _stone);
     sf::CircleShape displaystone() const; //вывод камня на экран
 };
-

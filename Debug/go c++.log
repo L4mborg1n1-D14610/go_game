@@ -1,4 +1,10 @@
-﻿  Source.cpp
+﻿  MainMenu.cpp
 c:\users\василий\source\repos\go c++\mainmenu.hpp(7): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-c:\users\василий\source\repos\go c++\source.cpp(18): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+  Source.cpp
+c:\users\василий\source\repos\go c++\mainmenu.hpp(7): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+  TableStone.cpp
+c:\users\василий\source\repos\go c++\tablestone.cpp(25): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\василий\source\repos\go c++\tablestone.cpp(29): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\василий\source\repos\go c++\tablestone.cpp(83): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
   go c++.vcxproj -> C:\Users\Василий\source\repos\go c++\Debug\go c++.exe

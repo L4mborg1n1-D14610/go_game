@@ -95,7 +95,7 @@ void menu(sf::RenderWindow& window, int scrX, int scrY) {
 												if (bigboard.ifpress(sf::Mouse::getPosition(window))) {
 																bigboard.changeTextColor();
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																				board_size - 3;
+																				board_size = 3;
 																				break;
 																}
 																colorflags[5] = true;
