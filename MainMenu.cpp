@@ -24,7 +24,11 @@ MainMenu::MainMenu(Table& _table) {
 
 void MainMenu::add_stone(TableStone* stone) {
 			 list_real_stones.push_back(stone);
-				list_coord_stones.push_back(stone->stone_coords(table));
+				if (stone->check_color()) {
+								list_coord_white_stones.push_back(stone->stone_coords(table));
+				} else {
+								list_coord_black_stones.push_back(stone->stone_coords(table));
+				}
 }
 void MainMenu::print_menu(sf::RenderWindow& window) {
 				Button creategame(middlescreenX(scrX), middlescreenY(scrY) / 4, "Create Game", 100); //создание кнопок главного меню
@@ -192,5 +196,82 @@ void MainMenu::print_window(sf::RenderWindow& window) {
 				}
 }
 void MainMenu::if_delete_stones() {
+				std::list < std::pair<int, int>> must_eat;
+				std::list < std::pair<int, int>> must_eated;
+				for (std::list < std::pair<int, int>>::iterator it = list_coord_white_stones.begin();
+								it != list_coord_white_stones.end(); ++it) {
 
+								must_eat.clear();
+								must_eated.clear();
+				}
 }
+std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x) {
+				for (auto i = 0; i < x; ++i) {
+								++it;
+				}
+				return it;
+}
+void MainMenu::check_neighbours(std::list<std::pair<int, int>>::iterator it,
+				std::list < std::pair<int, int>>& eat,
+				std::list < std::pair<int, int>>& eated,
+				bool& color) {
+				int x = it->first;
+				int y = it->second;
+				if (VACANT(x, y, color)) {
+								if (x == 0 && y == 0) {
+												eated.push_back(*it);
+												++it;
+												check_neighbours(it, eat, eated, color);
+												it += table->return_tablesize();
+												check_neighbours(it, eat, eated, color);
+												--it;
+												check_neighbours(it, eat, eated, color);
+												eated.sort();
+												eated.erase(std::unique(eated.begin(), eated.end()), eated.end());
+								}
+								else if (x == 0 && y == (table->return_tablesize() - 1)) {
+
+								}
+								else if (x == (table->return_tablesize() - 1) && y == 0) {
+
+								}
+								else if (x == (table->return_tablesize() - 1) && y == (table->return_tablesize() - 1)) {
+
+								}
+								else if (x == 0) {
+
+								}
+								else if (x == (table->return_tablesize() - 1)) {
+
+								}
+								else if (y == 0) {
+
+								}
+								else if (y == (table->return_tablesize() - 1)) {
+
+								}
+								else {
+
+								}
+				}
+}
+bool MainMenu::VACANT(int& x, int& y, bool& color) {
+				if (color) {
+								if (std::find(list_coord_white_stones.begin(), list_coord_white_stones.end(), std::make_pair(x, y))
+												!= list_coord_white_stones.end()) {
+												return true;
+								}
+								else {
+												return false;
+								}
+				}	else {
+								if (std::find(list_coord_black_stones.begin(), list_coord_black_stones.end(), std::make_pair(x, y))
+												!= list_coord_black_stones.end()) {
+												return true;
+								}
+								else {
+												return false;
+								}
+				}
+}
+

@@ -8,7 +8,8 @@ class MainMenu {
 private:
     Table* table;
     std::list<TableStone*> list_real_stones;
-    std::list<std::pair<int, int>> list_coord_stones;
+    std::list<std::pair<int, int>> list_coord_white_stones;
+    std::list<std::pair<int, int>> list_coord_black_stones;
     int board_size;
     bool menu_table_flag;
     int scrX;
@@ -26,5 +27,10 @@ public:
     void add_stone(TableStone* stone);
     void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
     void if_delete_stones();
+    void check_neighbours(std::list < std::pair<int, int>>::iterator it,
+        std::list < std::pair<int, int>>& eat,
+        std::list < std::pair<int, int>>& eated,
+        bool& color);
+    bool VACANT(int& x, int& y, bool& color);
 };
-
+std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x);

@@ -20,6 +20,7 @@ public:
     TableStone(sf::Vector2i&& _mouse, Table& table, bool _stone_color);
     void change_tablestone(sf::Vector2i&& _mouse, Table& table, bool _stone_color);
     bool check_stone();
+    bool check_color();
     TableStone operator=(TableStone& _stone);
     sf::CircleShape displaystone() const; //вывод камня на экран
     std::pair<int, int> stone_coords(Table* _table); //first - horisontal, second - vertical

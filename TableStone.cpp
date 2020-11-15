@@ -80,6 +80,9 @@ bool TableStone::check_stone() {
         return true;
     }
 }
+bool TableStone::check_color() {
+    return stone_color;
+}
 sf::CircleShape TableStone::displaystone() const {
     return stone;
 };
