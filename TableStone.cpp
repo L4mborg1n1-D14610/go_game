@@ -64,7 +64,7 @@ void TableStone::change_tablestone(sf::Vector2i&& _mouse, Table& table, bool _st
     this->y_t = std::get<1>(Checkcoordinate(_mouse, radius, size, table));
     if (x_t && y_t) {
         stone.setPosition(x_t - radius, y_t - radius);
-        if (stone_color) {
+        if (_stone_color) {
             Tablestone_texture.loadFromFile("Images/WhiteTexture.png");
         }
         else {
@@ -102,4 +102,13 @@ std::pair<int, int> TableStone::stone_coords(Table* _table) { //first - horisont
         }
     }
     return (std::make_pair(horizontal, vertical));
+}
+std::pair<int, int> TableStone::stone_coords_pixels() {
+    return std::make_pair(x_t, y_t);
+}
+int TableStone::stone_x_coords(Table* _table) {
+    return (this->stone_coords(_table)).first;
+}
+int TableStone::stone_y_coords(Table* _table) {
+    return (this->stone_coords(_table)).second;
 }

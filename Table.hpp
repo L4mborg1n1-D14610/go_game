@@ -26,6 +26,7 @@ public:
     bool checkStoneCursor(sf::Vector2i _mouse); //проверяет, находится ли курсор в области, доступной для создания камня
     std::vector<int> get_doats_coordinate_x();
     std::vector<int> get_doats_coordinate_y();
+
 };
 
 

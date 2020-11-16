@@ -1,6 +1,8 @@
 #pragma once
 #include<iterator>
 #include <list>
+#include <utility>
+#include <iostream>
 #include "Button.hpp"
 #include "TableStone.hpp"
 
@@ -14,6 +16,7 @@ private:
     bool menu_table_flag;
     int scrX;
     int scrY;
+    bool color;
 
     int middlescreenX(int& x);
     int middlescreenY(int& y);
@@ -27,10 +30,19 @@ public:
     void add_stone(TableStone* stone);
     void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
     void if_delete_stones();
-    void check_neighbours(std::list < std::pair<int, int>>::iterator it,
+    bool check_neighbours(int& x, int& y,
         std::list < std::pair<int, int>>& eat,
         std::list < std::pair<int, int>>& eated,
         bool& color);
-    bool VACANT(int& x, int& y, bool& color);
+    void delete_stones(const std::pair<int, int>& eated, bool& color);
+    bool if_stone_in_list(std::pair<int, int>& _pair);
+    bool check_eat_stone(int& x, int& y, bool& color,
+        std::list<std::pair<int, int>>& eated, std::list<std::pair<int, int>>& eat);
+    bool NOT_VACANT(int& x, int& y, bool& color);
+    bool NOT_VACANT(int& x, int& y, bool&& color);
+    bool VACANT(int&& x, int&& y);
+    bool NOT_VACANT_ANY_LIST(int& x, int& y, std::list<std::pair<int, int>> _list);
+
 };
+std::pair<int, int> return_stone_coordinate(const std::pair<int, int>& _pair, int& tablesize);
 std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x);

@@ -24,4 +24,7 @@ public:
     TableStone operator=(TableStone& _stone);
     sf::CircleShape displaystone() const; //вывод камня на экран
     std::pair<int, int> stone_coords(Table* _table); //first - horisontal, second - vertical
+    std::pair<int, int> stone_coords_pixels();
+    int stone_x_coords(Table* _table);
+    int stone_y_coords(Table* _table);
 };
