@@ -30,14 +30,11 @@ public:
     void add_stone(TableStone* stone);
     void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
     void if_delete_stones();
-    bool check_neighbours(int& x, int& y,
-        std::list < std::pair<int, int>>& eat,
-        std::list < std::pair<int, int>>& eated,
-        bool& color);
+    bool check_neighbours(int& x, int& y, bool& color);
+    bool check_neighbours(int& x, int& y, std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated, bool& color);
     void delete_stones(const std::pair<int, int>& eated, bool& color);
-    bool if_stone_in_list(std::pair<int, int>& _pair);
     bool check_eat_stone(int& x, int& y, bool& color,
-        std::list<std::pair<int, int>>& eated, std::list<std::pair<int, int>>& eat);
+        std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated);
     bool NOT_VACANT(int& x, int& y, bool& color);
     bool NOT_VACANT(int& x, int& y, bool&& color);
     bool VACANT(int&& x, int&& y);
