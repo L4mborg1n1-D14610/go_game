@@ -28,18 +28,34 @@ void MainMenu::add_stone(TableStone* stone) {
 												list_real_stones.push_back(stone);
 												list_coord_white_stones.push_back(stone->stone_coords(table));
 												this->color = false;
-												if_delete_stones();
-												if_delete_stones();
-												if_delete_stones();
-												if_delete_stones();
+												delete_flag = true;
+												suicide_flag = false;
+												while (delete_flag == true) {
+																if_delete_stones(stone->check_color());
+																if (suicide_flag == true) {
+																				//////////////////////////////////
+																				list_real_stones.erase(--list_real_stones.end());
+																				list_coord_white_stones.erase(--list_coord_white_stones.end());
+																				this->color = true;
+																				break;
+																}
+												}
 								}	else {
 												list_real_stones.push_back(stone);
 												list_coord_black_stones.push_back(stone->stone_coords(table));
 												this->color = true;
-												if_delete_stones();
-												if_delete_stones();
-												if_delete_stones();
-												if_delete_stones();
+												delete_flag = true;
+												suicide_flag = false;
+												while (delete_flag == true) {
+																if_delete_stones(stone->check_color());
+																if (suicide_flag == true) {
+																				//////////////////////////////////
+																				list_real_stones.erase(--list_real_stones.end());
+																				list_coord_black_stones.erase(--list_coord_black_stones.end());
+																				this->color = false;
+																				break;
+																}
+												}
 								}
 				}
 }
@@ -163,7 +179,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 				}
 }
 void MainMenu::print_table(sf::RenderWindow& window) {
-				this->color = false;
+				this->color = true;
 				bool help_stones_flag = true;
 				TableStone helperstone(sf::Mouse::getPosition(window), *table, this->color);
 				while (window.isOpen())
@@ -212,28 +228,68 @@ void MainMenu::print_window(sf::RenderWindow& window) {
 								}
 				}
 }
-void MainMenu::if_delete_stones() {
-				bool _color = true;
-				for (std::list < std::pair<int, int>>::iterator it = list_coord_white_stones.begin();
-								it != list_coord_white_stones.end(); ++it) {
-								int x = it->first;
-								int y = it->second;
-								if (check_neighbours(x, y, _color)) {
-												return;
+void MainMenu::if_delete_stones(bool&& color) {
+				bool _color;
+				if (color) {
+								_color = false;
+								for (std::list < std::pair<int, int>>::iterator it = list_coord_black_stones.begin();
+												it != list_coord_black_stones.end(); ++it) {
+												int x = it->first;
+												int y = it->second;
+												if (check_neighbours(x, y, _color, color)) {
+																delete_flag = true;
+																return;
+												}
+												else {
+																delete_flag = false;
+												}
 								}
-				}
-				_color = false;
-				for (std::list < std::pair<int, int>>::iterator it = list_coord_black_stones.begin();
-								it != list_coord_black_stones.end(); ++it) {
-								int x = it->first;
-								int y = it->second;
-								if (check_neighbours(x, y, _color)) {
-												return;
+								_color = true;
+								for (std::list < std::pair<int, int>>::iterator it = list_coord_white_stones.begin();
+												it != list_coord_white_stones.end(); ++it) {
+												int x = it->first;
+												int y = it->second;
+												if (check_neighbours(x, y, _color, color)) {
+																delete_flag = true;
+																suicide_flag = true;
+																return;
+												}
+												else {
+																delete_flag = false;
+												}
+								}
+				}	else {
+								_color = true;
+								for (std::list < std::pair<int, int>>::iterator it = list_coord_white_stones.begin();
+												it != list_coord_white_stones.end(); ++it) {
+												int x = it->first;
+												int y = it->second;
+												if (check_neighbours(x, y, _color, color)) {
+																delete_flag = true;
+																return;
+												}
+												else {
+																delete_flag = false;
+												}
+								}
+								_color = false;
+								for (std::list < std::pair<int, int>>::iterator it = list_coord_black_stones.begin();
+												it != list_coord_black_stones.end(); ++it) {
+												int x = it->first;
+												int y = it->second;
+												if (check_neighbours(x, y, _color, color)) {
+																suicide_flag = true;
+																delete_flag = true;
+																return;
+												}
+												else {
+																delete_flag = false;
+												}
 								}
 				}
 }
 
-bool MainMenu::check_neighbours(int& x, int& y,	bool& color) {    //поменять потом порядок if -  в начале наиболее вероятные события
+bool MainMenu::check_neighbours(int& x, int& y,	bool& color, bool& last_color) {    //поменять потом порядок if -  в начале наиболее вероятные события
 				std::list < std::pair<int, int>> eat;
 				std::list < std::pair<int, int>> eated;
 				int tablesize;
@@ -377,15 +433,20 @@ bool MainMenu::check_neighbours(int& x, int& y,	bool& color) {    //поменять пот
 																return false;
 												}
 								}
-				//			eated.sort();
-				//			eated.erase(std::unique(eated.begin(), eated.end()), eated.end());
+				  			eated.sort();
+				  			eated.erase(std::unique(eated.begin(), eated.end()), eated.end());
 				//			eat.sort();
 				//			eat.erase(std::unique(eat.begin(), eat.end()), eat.end());
-								for (std::list<std::pair<int, int>>::iterator it = eated.begin(); it != eated.end(); ++it) {
-												delete_stones(*it, color);
+								if (color != last_color) {
+												for (std::list<std::pair<int, int>>::iterator it = eated.begin(); it != eated.end(); ++it) {
+																delete_stones(*it, color);
+												}
+								}	else {
+												suicide_flag = true;
 								}
 								return true;
-				} return false;
+				} 
+				return false;
 }
 void MainMenu::delete_stones(const std::pair<int, int>& eated, bool& color) {
 				int table_size = table->return_tablesize();
@@ -407,7 +468,10 @@ bool MainMenu::check_eat_stone(int& x, int& y, bool& color,
 				std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated) {
 				if (NOT_VACANT(x, y, color)) {
 								if (NOT_VACANT_ANY_LIST(x, y, eated)) {
-												check_neighbours(x, y, eat, eated, color);
+							//					eated.push_back(std::make_pair(x, y));
+												if (!check_neighbours(x, y, eat, eated, color)) {
+																return true;
+												}
 								}
 								return false;
 				}	else if (NOT_VACANT(x, y, !color)) {
@@ -473,8 +537,21 @@ bool MainMenu::NOT_VACANT_ANY_LIST(int& x, int& y, std::list<std::pair<int, int>
 								return false;
 				}
 }
-bool MainMenu::check_neighbours(int& x, int& y, std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated, bool& color) {
-				int tablesize = table->return_tablesize() - 1;
+bool MainMenu::check_neighbours(int& _x, int& _y, std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated, bool& color) {
+				int tablesize;
+				int x;
+				int y;
+				x = _x;
+				y = _y;
+				switch (table->return_tablesize()) {
+				case 1: tablesize = 8;
+								break;
+				case 2: tablesize = 12;
+								break;
+				case 3: tablesize = 18;
+								break;
+				default: break;
+				}
 				if (NOT_VACANT(x, y, color)) {
 								if (x == 0 && y == 0) {
 												eated.push_back(std::make_pair(x, y));
@@ -614,6 +691,7 @@ bool MainMenu::check_neighbours(int& x, int& y, std::list<std::pair<int, int>>& 
 																return false;
 												}
 								}
+								return true;
 				}
 }
 std::pair<int, int> return_stone_coordinate(const std::pair<int, int>& _pair, int& tablesize) {

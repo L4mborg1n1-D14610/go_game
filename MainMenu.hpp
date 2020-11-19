@@ -21,6 +21,8 @@ private:
     int middlescreenX(int& x);
     int middlescreenY(int& y);
     void if_mouse_not_on_button(Button& button, sf::RenderWindow& window, bool flag);
+    bool delete_flag;   //флаг, что удалились камни
+    bool suicide_flag;   //флаг попытки суицида камня
 public:
 
     MainMenu(int& scrX, int& scrY);
@@ -29,8 +31,8 @@ public:
     void print_menu(sf::RenderWindow& window); //печатаем главное меню
     void add_stone(TableStone* stone);
     void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
-    void if_delete_stones();
-    bool check_neighbours(int& x, int& y, bool& color);
+    void if_delete_stones(bool&& color);
+    bool check_neighbours(int& x, int& y, bool& color, bool& last_color);
     bool check_neighbours(int& x, int& y, std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated, bool& color);
     void delete_stones(const std::pair<int, int>& eated, bool& color);
     bool check_eat_stone(int& x, int& y, bool& color,
