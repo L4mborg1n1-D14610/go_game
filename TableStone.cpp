@@ -59,6 +59,15 @@ TableStone TableStone::operator=(TableStone& _stone) {
     this->size = _stone.size;
     return *this;
 }
+bool TableStone::operator ==(TableStone&& _stone) {
+    if (this->stone_color == _stone.stone_color
+        && this->x_t == _stone.x_t
+        && this->y_t == _stone.y_t) {
+        return true;
+    } else {
+        return false;
+    }
+}
 void TableStone::change_tablestone(sf::Vector2i&& _mouse, Table& table, bool _stone_color) {
     this->x_t = std::get<0>(Checkcoordinate(_mouse, radius, size, table));
     this->y_t = std::get<1>(Checkcoordinate(_mouse, radius, size, table));

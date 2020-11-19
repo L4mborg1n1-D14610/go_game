@@ -179,40 +179,59 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 				}
 }
 void MainMenu::print_table(sf::RenderWindow& window) {
+				Button Push_Stone(10 * scrX / 11, scrY / 20, "Add Stone", 50);
+				bool push_flag = false;
 				this->color = true;
-				bool help_stones_flag = true;
-				TableStone helperstone(sf::Mouse::getPosition(window), *table, this->color);
+				bool begin_flag = false;
+				bool dontpush_stone_flag = false;
+				TableStone _helperstone(sf::Mouse::getPosition(window), *table, this->color);
+				TableStone* helperstone = new TableStone();
+				TableStone _pushed_stone(sf::Mouse::getPosition(window), *table, this->color);
+				TableStone* pushed_stone = new TableStone();
 				while (window.isOpen())
 				{
 								sf::Event event;
-								window.draw((*table).displaytablesprite());
 								while (window.pollEvent(event))
 								{
 												if (event.type == sf::Event::Closed) {
 																window.close();
 												}
-								}
-								if ((*table).checkStoneCursor(sf::Mouse::getPosition(window))) {
-												if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																add_stone(new TableStone(sf::Mouse::getPosition(window), *table, color));
-												}	else if (help_stones_flag) {
-																TableStone st(sf::Mouse::getPosition(window), *table, color);
-																helperstone = st;
-																help_stones_flag = false;
-																window.draw(helperstone.displaystone());
-												}
-												else if (!help_stones_flag) {
-																if (helperstone.check_stone()) {
-																				helperstone.change_tablestone(sf::Mouse::getPosition(window), *table, color);
-																								window.draw(helperstone.displaystone());
+												window.draw((*table).displaytablesprite());
+												if ((*table).checkStoneCursor(sf::Mouse::getPosition(window))) {
+																if (event.type == event.MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+
+																				if (*pushed_stone == TableStone(sf::Mouse::getPosition(window), *table, color)) {
+																								dontpush_stone_flag = false;																				}
+																				else {
+																								pushed_stone = new TableStone(sf::Mouse::getPosition(window), *table, color);
+																								begin_flag = true;
+																								dontpush_stone_flag = true;
+																				}
+																}
+															 if (!dontpush_stone_flag) {
+																								helperstone = new TableStone(sf::Mouse::getPosition(window), *table, color);
+																								window.draw(helperstone->displaystone());
 																}
 												}
+												if (VACANT(pushed_stone->stone_x_coords(table), pushed_stone->stone_y_coords(table)) && begin_flag && dontpush_stone_flag) {
+																window.draw(pushed_stone->displaystone());
+												}
+												if_mouse_not_on_button(Push_Stone, window, push_flag);
+												if (Push_Stone.ifpress(sf::Mouse::getPosition(window))) {
+																Push_Stone.changeTextColor();
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && begin_flag && dontpush_stone_flag) {
+																				add_stone(pushed_stone);
+																				dontpush_stone_flag = false;
+																}
+																push_flag = true;
+												}
+												for (auto it : list_real_stones) {
+																window.draw((*it).displaystone());
+												}
+												window.draw(Push_Stone.displayText());
+												window.display();
+												window.clear();
 								}
-								for (auto it : list_real_stones) {
-												window.draw((*it).displaystone());
-								}
-								window.display();
-								window.clear();
 				}
 }
 
