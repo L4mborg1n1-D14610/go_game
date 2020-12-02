@@ -65,6 +65,17 @@ std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, 
 				}
 				return it;
 }
+bool check_press(const std::vector<bool>& _vec, int&& a, int&& b) {
+				if (a > b) {
+								std::swap(a, b);
+				}
+				for (; a <= b; ++a) {
+								if (_vec[a]) {
+												return true;
+								}
+				}
+				return false;
+}
 void MainMenu::print_menu(sf::RenderWindow& window) {
 				Button creategame(middlescreenX(scrX), middlescreenY(scrY) / 4, "Create Game", 100); //создание кнопок главного меню
 				Button joingame(middlescreenX(scrX), middlescreenY(scrY) / 2, "Join Game", 100);
@@ -72,12 +83,20 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 				Button smallboard(7 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 4, "9x9", 50);
 				Button mediumboard(8 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 4, "13x13", 50);
 				Button bigboard(9 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 4, "19x19", 50);
-				Button backbutton(8 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "Back", 50);
-				std::vector<Button> buttons = { creategame , joingame, exitbutton, smallboard, mediumboard, bigboard, backbutton };
+				Button WhiteColor(7.5 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "White", 50);
+				Button BlackColor(8.5 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "Black", 50);
+				Button backbutton(8 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 2, "Back", 50);
+				Button writetext(7.5 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 2, "write lobby name:", 40);
+				Button wrinebutton(9 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 2, 40);
+				std::vector<Button> buttons = { creategame , joingame, exitbutton, smallboard, mediumboard, bigboard, WhiteColor, BlackColor, backbutton, writetext, wrinebutton };
 				std::vector <bool> colorflags;
 				std::vector<Button>::iterator it_but = buttons.begin();
-				for (auto i = 0; i < 7; ++i) {
+				for (auto i = 0; i < 9; ++i) {
 								colorflags.push_back(false);
+				}
+				std::vector<bool> chooseflags; //choose boardsize&color
+				for (auto i = 0; i < 5; ++i) {
+								chooseflags.push_back(false);
 				}
 				bool createflag = false; //флаг для изменения цвета кнопок
 				while (window.isOpen())
@@ -119,33 +138,101 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 								++it_but;
 								if (createflag) {
 												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																(*it_but).changeTextColor();
+																if (!check_press(chooseflags, 0, 2)) {
+																				(*it_but).changeTextColor();
+																}
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (chooseflags[1]) {
+																								buttons[4].changeTextColorBack();
+																								chooseflags[1] = false;
+																				}
+																				if (chooseflags[2]) {
+																								buttons[5].changeTextColorBack();
+																								chooseflags[2] = false;
+																				}
+																				chooseflags[0] = true;
+																				(*it_but).changeTextColor();
 																				board_size = 1;
 																				menu_table_flag = false;
-																				break;
+																				server_flag = true;
 																}
 																colorflags[3] = true;
 												}
 												++it_but;
 												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																(*it_but).changeTextColor();
+																if (!check_press(chooseflags, 0, 2)) {
+																				(*it_but).changeTextColor();
+																}
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (chooseflags[0]) {
+																								buttons[3].changeTextColorBack();
+																								chooseflags[0] = false;
+																				}
+																				if (chooseflags[2]) {
+																								buttons[5].changeTextColorBack();
+																								chooseflags[2] = false;
+																				}
+																				chooseflags[1] = true;
+																				(*it_but).changeTextColor();
 																				board_size = 2;
 																				menu_table_flag = false;
-																				break;
+																				server_flag = true;
 																}
 																colorflags[4] = true;
 												}
 												++it_but;
 												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																(*it_but).changeTextColor();
+																if (!check_press(chooseflags, 0, 2)) {
+																				(*it_but).changeTextColor();
+																}
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (chooseflags[0]) {
+																								buttons[3].changeTextColorBack();
+																								chooseflags[0] = false;
+																				}
+																				if (chooseflags[1]) {
+																								buttons[4].changeTextColorBack();
+																								chooseflags[1] = false;
+																				}
+																				chooseflags[2] = true;
+																				(*it_but).changeTextColor();
 																				board_size = 3;
 																				menu_table_flag = false;
-																				break;
+																				server_flag = true;
 																}
 																colorflags[5] = true;
+												}
+												++it_but;
+												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
+																if (!check_press(chooseflags, 3, 4)) {
+																				(*it_but).changeTextColor();
+																}
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (chooseflags[4]) {
+																								buttons[7].changeTextColorBack();
+																								chooseflags[4] = false;
+																				}
+																				chooseflags[3] = true;
+																				(*it_but).changeTextColor();
+																				color = true;
+																}
+																colorflags[6] = true;
+												}
+												++it_but;
+												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
+																if (!check_press(chooseflags, 3, 4)) {
+																				(*it_but).changeTextColor();
+																}
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (chooseflags[3]) {
+																								buttons[6].changeTextColorBack();
+																								chooseflags[3] = false;
+																				}
+																				chooseflags[4] = true;
+																				(*it_but).changeTextColor();
+																				color = false;
+																}
+																colorflags[7] = true;
 												}
 												++it_but;
 												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
@@ -153,19 +240,49 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 																				createflag = false;
 																}
-																colorflags[6] = true;
+																colorflags[8] = true;
 												}
-												if_mouse_not_on_button(*it_but, window, colorflags[6]);
+												if_mouse_not_on_button(*it_but, window, colorflags[8]);
+												window.draw((*it_but).displayText());
+												++it_but;
+												window.draw((*it_but).displayText());
+												++it_but;
+												////сделать ввод текста с клавы
 												window.draw((*it_but).displayText());
 												--it_but;
-												if_mouse_not_on_button(*it_but, window, colorflags[5]);
-												window.draw((*it_but).displayText());
 												--it_but;
-												if_mouse_not_on_button(*it_but, window, colorflags[4]);
-												window.draw((*it_but).displayText());
 												--it_but;
-												if_mouse_not_on_button(*it_but, window, colorflags[3]);
-												window.draw((*it_but).displayText());
+												if (check_press(chooseflags, 3, 4)) {
+																window.draw((*it_but).displayText());
+																--it_but;
+																window.draw((*it_but).displayText());
+																--it_but;
+												}	else {
+																if_mouse_not_on_button(*it_but, window, colorflags[7]);
+																window.draw((*it_but).displayText());
+																--it_but;
+																if_mouse_not_on_button(*it_but, window, colorflags[6]);
+																window.draw((*it_but).displayText());
+																--it_but;
+												}
+												if (check_press(chooseflags, 0, 2)) {
+																window.draw((*it_but).displayText());
+																--it_but;
+																window.draw((*it_but).displayText());
+																--it_but;
+																window.draw((*it_but).displayText());
+																--it_but;
+												}	else {
+																if_mouse_not_on_button(*it_but, window, colorflags[5]);
+																window.draw((*it_but).displayText());
+																--it_but;
+																if_mouse_not_on_button(*it_but, window, colorflags[4]);
+																window.draw((*it_but).displayText());
+																--it_but;
+																if_mouse_not_on_button(*it_but, window, colorflags[3]);
+																window.draw((*it_but).displayText());
+																--it_but;
+												}
 								}
 								it_but = buttons.begin();
 								window.draw(buttons[0].displayText());
@@ -243,6 +360,16 @@ void MainMenu::print_window(sf::RenderWindow& window) {
 								else {
 												Table t(board_size);
 												table = &t;
+												sf::IpAddress ip = sf::IpAddress::getLocalAddress();	//Локальный ip Адресс
+												std::cout << ip;
+												if (server_flag) {
+																sf::TcpListener listener;
+																listener.listen(2001);
+																listener.accept(socket);
+												}	else {
+																// write ip in programm
+																socket.connect(ip, 2001);
+												}
 												print_table(window);
 								}
 				}

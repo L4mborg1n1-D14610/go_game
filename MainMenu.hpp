@@ -1,4 +1,5 @@
 #pragma once
+#include<SFML/Network.hpp>
 #include<iterator>
 #include <list>
 #include <utility>
@@ -23,8 +24,11 @@ private:
     void if_mouse_not_on_button(Button& button, sf::RenderWindow& window, bool flag);
     bool delete_flag;   //флаг, что удалились камни
     bool suicide_flag;   //флаг попытки суицида камня
+    bool server_flag; //true - server, false - client
+    sf::IpAddress ip;
+    sf::TcpSocket socket;//программный интерфейс для обеспечения обмена данными между процессами
+    sf::Packet packet;
 public:
-
     MainMenu(int& scrX, int& scrY);
     MainMenu(Table& _table);
     void print_table(sf::RenderWindow& window); //печатаем стол+камни

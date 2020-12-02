@@ -28,10 +28,12 @@ void menu(sf::RenderWindow& window, int scrX, int scrY) {
 				Button smallboard(7 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 4, "9x9", 50);
 				Button mediumboard(8 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 4, "13x13", 50);
 				Button bigboard(9 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 4, "19x19", 50);
-				Button backbutton(8 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "Back", 50);
+				Button WhiteColor(7 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "White", 50);
+				Button BlackColor(9 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "Black", 50);
+				Button backbutton(8 * middlescreenX(scrX) / 5, 3 * middlescreenY(scrY) / 2, "Back", 50);
 				std::vector <bool> colorflags;
 				int board_size;
-				for (auto i = 0; i < 7; ++i) {
+				for (auto i = 0; i < 9; ++i) {
 								colorflags.push_back(false);
 				}
 				bool createflag = false;
@@ -111,10 +113,14 @@ void menu(sf::RenderWindow& window, int scrX, int scrY) {
 												if_mouse_not_on_button(smallboard, window, colorflags[3]);
 												if_mouse_not_on_button(mediumboard, window, colorflags[4]);
 												if_mouse_not_on_button(bigboard, window, colorflags[5]);
-												if_mouse_not_on_button(backbutton, window, colorflags[6]);
+												if_mouse_not_on_button(WhiteColor, window, colorflags[6]);
+												if_mouse_not_on_button(BlackColor, window, colorflags[7]);
+												if_mouse_not_on_button(backbutton, window, colorflags[8]);
 												window.draw(smallboard.displayText());
 												window.draw(mediumboard.displayText());
 												window.draw(bigboard.displayText());
+												window.draw(WhiteColor.displayText());
+												window.draw(BlackColor.displayText());
 												window.draw(backbutton.displayText());
 								}
 
