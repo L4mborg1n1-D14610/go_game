@@ -86,12 +86,26 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 				Button WhiteColor(7.5 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "White", 50);
 				Button BlackColor(8.5 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 4, "Black", 50);
 				Button backbutton(8 * middlescreenX(scrX) / 5, 1.5 * middlescreenY(scrY) / 2, "Back", 50);
-				Button writetext(7.5 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 2, "write lobby name:", 40);
-				Button wrinebutton(9 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 2, 40);
-				std::vector<Button> buttons = { creategame , joingame, exitbutton, smallboard, mediumboard, bigboard, WhiteColor, BlackColor, backbutton, writetext, wrinebutton };
+				Button writetext(7.5 * middlescreenX(scrX) / 5, middlescreenY(scrY) / 2, "Write lobby name:", 40);
+				Button writebutton(8.5 * middlescreenX(scrX) / 5, 0.87 * middlescreenY(scrY) / 2, 40);
+				Button create(8 * middlescreenX(scrX) / 5, 1.25 * middlescreenY(scrY) / 2, "Create", 50);
+				Button join(8 * middlescreenX(scrX) / 5, 1.25 * middlescreenY(scrY) / 2, "Join", 50);
+				std::vector<std::unique_ptr<Button>> buttons; 
+				buttons.push_back(std::make_unique<Button>(creategame));  //0
+				buttons.push_back(std::make_unique<Button>(joingame));				//1
+				buttons.push_back(std::make_unique<Button>(exitbutton));		//2
+				buttons.push_back(std::make_unique<Button>(smallboard));		//3
+				buttons.push_back(std::make_unique<Button>(mediumboard));	//4
+				buttons.push_back(std::make_unique<Button>(bigboard));				//5
+				buttons.push_back(std::make_unique<Button>(WhiteColor));		//6
+				buttons.push_back(std::make_unique<Button>(BlackColor));		//7
+				buttons.push_back(std::make_unique<Button>(backbutton));		//8
+				buttons.push_back(std::make_unique<Button>(writetext));			//9
+				buttons.push_back(std::make_unique<Button>(writebutton));	//10
+				buttons.push_back(std::make_unique<Button>(create));						//11
+				buttons.push_back(std::make_unique<Button>(join));								//12
 				std::vector <bool> colorflags;
-				std::vector<Button>::iterator it_but = buttons.begin();
-				for (auto i = 0; i < 9; ++i) {
+				for (auto i = 0; i < 13; ++i) {
 								colorflags.push_back(false);
 				}
 				std::vector<bool> chooseflags; //choose boardsize&color
@@ -99,200 +113,235 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 								chooseflags.push_back(false);
 				}
 				bool createflag = false; //флаг для изменения цвета кнопок
-				while (window.isOpen())
-				{
+				bool joinflag = false;
+				while (window.isOpen())		{
 								sf::Event event;
-								while (window.pollEvent(event))
-								{
+								while (window.pollEvent(event)) {
 												if (event.type == sf::Event::Closed) {
 																window.close();
 												}
-
-								}
-								if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-												(*it_but).changeTextColor();
-												if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																createflag = true;
-												}
-												colorflags[0] = true;
-								}
-								if_mouse_not_on_button(*it_but, window, colorflags[0]);
-								++it_but;
-								if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-												(*it_but).changeTextColor();
-												if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																///////////////////////////////////////////////////////////////////////////////////////////////////
-												}
-												colorflags[1] = true;
-								}
-								if_mouse_not_on_button(*it_but, window, colorflags[1]);
-								++it_but;
-								if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-												(*it_but).changeTextColor();
-												if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																window.close();
-												}
-												colorflags[2] = true;
-								}
-								if_mouse_not_on_button(*it_but, window, colorflags[2]);
-								++it_but;
-								if (createflag) {
-												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																if (!check_press(chooseflags, 0, 2)) {
-																				(*it_but).changeTextColor();
-																}
+												if ((*buttons[0]).ifpress(sf::Mouse::getPosition(window))) {
+																(*buttons[0]).changeTextColor();
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																				if (chooseflags[1]) {
-																								buttons[4].changeTextColorBack();
-																								chooseflags[1] = false;
-																				}
-																				if (chooseflags[2]) {
-																								buttons[5].changeTextColorBack();
-																								chooseflags[2] = false;
-																				}
-																				chooseflags[0] = true;
-																				(*it_but).changeTextColor();
-																				board_size = 1;
-																				menu_table_flag = false;
-																				server_flag = true;
+																				createflag = true;
+																				joinflag = false;
+																				(*buttons[10]).emptytext();
 																}
-																colorflags[3] = true;
+																colorflags[0] = true;
 												}
-												++it_but;
-												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																if (!check_press(chooseflags, 0, 2)) {
-																				(*it_but).changeTextColor();
-																}
+												if_mouse_not_on_button((*buttons[0]), window, colorflags[0]);
+												if ((*buttons[1]).ifpress(sf::Mouse::getPosition(window))) {
+																(*buttons[1]).changeTextColor();
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																				if (chooseflags[0]) {
-																								buttons[3].changeTextColorBack();
-																								chooseflags[0] = false;
-																				}
-																				if (chooseflags[2]) {
-																								buttons[5].changeTextColorBack();
-																								chooseflags[2] = false;
-																				}
-																				chooseflags[1] = true;
-																				(*it_but).changeTextColor();
-																				board_size = 2;
-																				menu_table_flag = false;
-																				server_flag = true;
-																}
-																colorflags[4] = true;
-												}
-												++it_but;
-												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																if (!check_press(chooseflags, 0, 2)) {
-																				(*it_but).changeTextColor();
-																}
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																				if (chooseflags[0]) {
-																								buttons[3].changeTextColorBack();
-																								chooseflags[0] = false;
-																				}
-																				if (chooseflags[1]) {
-																								buttons[4].changeTextColorBack();
-																								chooseflags[1] = false;
-																				}
-																				chooseflags[2] = true;
-																				(*it_but).changeTextColor();
-																				board_size = 3;
-																				menu_table_flag = false;
-																				server_flag = true;
-																}
-																colorflags[5] = true;
-												}
-												++it_but;
-												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																if (!check_press(chooseflags, 3, 4)) {
-																				(*it_but).changeTextColor();
-																}
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																				if (chooseflags[4]) {
-																								buttons[7].changeTextColorBack();
-																								chooseflags[4] = false;
-																				}
-																				chooseflags[3] = true;
-																				(*it_but).changeTextColor();
-																				color = true;
-																}
-																colorflags[6] = true;
-												}
-												++it_but;
-												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																if (!check_press(chooseflags, 3, 4)) {
-																				(*it_but).changeTextColor();
-																}
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																				if (chooseflags[3]) {
-																								buttons[6].changeTextColorBack();
-																								chooseflags[3] = false;
-																				}
-																				chooseflags[4] = true;
-																				(*it_but).changeTextColor();
-																				color = false;
-																}
-																colorflags[7] = true;
-												}
-												++it_but;
-												if ((*it_but).ifpress(sf::Mouse::getPosition(window))) {
-																(*it_but).changeTextColor();
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				joinflag = true;
 																				createflag = false;
+																				(*buttons[10]).emptytext();
 																}
-																colorflags[8] = true;
+																colorflags[1] = true;
 												}
-												if_mouse_not_on_button(*it_but, window, colorflags[8]);
-												window.draw((*it_but).displayText());
-												++it_but;
-												window.draw((*it_but).displayText());
-												++it_but;
-												////сделать ввод текста с клавы
-												window.draw((*it_but).displayText());
-												--it_but;
-												--it_but;
-												--it_but;
-												if (check_press(chooseflags, 3, 4)) {
-																window.draw((*it_but).displayText());
-																--it_but;
-																window.draw((*it_but).displayText());
-																--it_but;
-												}	else {
-																if_mouse_not_on_button(*it_but, window, colorflags[7]);
-																window.draw((*it_but).displayText());
-																--it_but;
-																if_mouse_not_on_button(*it_but, window, colorflags[6]);
-																window.draw((*it_but).displayText());
-																--it_but;
+												if_mouse_not_on_button((*buttons[1]), window, colorflags[1]);
+												if ((*buttons[2]).ifpress(sf::Mouse::getPosition(window))) {
+																(*buttons[2]).changeTextColor();
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				window.close();
+																}
+																colorflags[2] = true;
 												}
-												if (check_press(chooseflags, 0, 2)) {
-																window.draw((*it_but).displayText());
-																--it_but;
-																window.draw((*it_but).displayText());
-																--it_but;
-																window.draw((*it_but).displayText());
-																--it_but;
-												}	else {
-																if_mouse_not_on_button(*it_but, window, colorflags[5]);
-																window.draw((*it_but).displayText());
-																--it_but;
-																if_mouse_not_on_button(*it_but, window, colorflags[4]);
-																window.draw((*it_but).displayText());
-																--it_but;
-																if_mouse_not_on_button(*it_but, window, colorflags[3]);
-																window.draw((*it_but).displayText());
-																--it_but;
+												if_mouse_not_on_button((*buttons[2]), window, colorflags[2]);
+												if (createflag) {
+																if ((*buttons[3]).ifpress(sf::Mouse::getPosition(window))) {
+																				if (!check_press(chooseflags, 0, 2)) {
+																								(*buttons[3]).changeTextColor();
+																				}
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								if (chooseflags[1]) {
+																												(*buttons[4]).changeTextColorBack();
+																												chooseflags[1] = false;
+																								}
+																								if (chooseflags[2]) {
+																												(*buttons[5]).changeTextColorBack();
+																												chooseflags[2] = false;
+																								}
+																								chooseflags[0] = true;
+																								(*buttons[3]).changeTextColor();
+																								board_size = 1;
+																								menu_table_flag = false;
+																								server_flag = true;
+																				}
+																				colorflags[3] = true;
+																}
+																if ((*buttons[4]).ifpress(sf::Mouse::getPosition(window))) {
+																				if (!check_press(chooseflags, 0, 2)) {
+																								(*buttons[4]).changeTextColor();
+																				}
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								if (chooseflags[0]) {
+																												(*buttons[3]).changeTextColorBack();
+																												chooseflags[0] = false;
+																								}
+																								if (chooseflags[2]) {
+																												(*buttons[5]).changeTextColorBack();
+																												chooseflags[2] = false;
+																								}
+																								chooseflags[1] = true;
+																								(*buttons[4]).changeTextColor();
+																								board_size = 2;
+																								menu_table_flag = false;
+																								server_flag = true;
+																				}
+																				colorflags[4] = true;
+																}
+																if ((*buttons[5]).ifpress(sf::Mouse::getPosition(window))) {
+																				if (!check_press(chooseflags, 0, 2)) {
+																								(*buttons[5]).changeTextColor();
+																				}
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								if (chooseflags[0]) {
+																												(*buttons[3]).changeTextColorBack();
+																												chooseflags[0] = false;
+																								}
+																								if (chooseflags[1]) {
+																												(*buttons[4]).changeTextColorBack();
+																												chooseflags[1] = false;
+																								}
+																								chooseflags[2] = true;
+																								(*buttons[5]).changeTextColor();
+																								board_size = 3;
+																								menu_table_flag = false;
+																								server_flag = true;
+																				}
+																				colorflags[5] = true;
+																}
+																if ((*buttons[6]).ifpress(sf::Mouse::getPosition(window))) {
+																				if (!check_press(chooseflags, 3, 4)) {
+																								(*buttons[6]).changeTextColor();
+																				}
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								if (chooseflags[4]) {
+																												(*buttons[7]).changeTextColorBack();
+																												chooseflags[4] = false;
+																								}
+																								chooseflags[3] = true;
+																								(*buttons[6]).changeTextColor();
+																								color = true;
+																				}
+																				colorflags[6] = true;
+																}
+																if ((*buttons[7]).ifpress(sf::Mouse::getPosition(window))) {
+																				if (!check_press(chooseflags, 3, 4)) {
+																								(*buttons[7]).changeTextColor();
+																				}
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								if (chooseflags[3]) {
+																												(*buttons[6]).changeTextColorBack();
+																												chooseflags[3] = false;
+																								}
+																								chooseflags[4] = true;
+																								(*buttons[7]).changeTextColor();
+																								color = false;
+																				}
+																				colorflags[7] = true;
+																}
+																if ((*buttons[8]).ifpress(sf::Mouse::getPosition(window))) {
+																				(*buttons[8]).changeTextColor();
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								createflag = false;
+																								(*buttons[10]).emptytext();
+																				}
+																				colorflags[8] = true;
+																}
+																if_mouse_not_on_button((*buttons[8]), window, colorflags[8]);
+																window.draw((*buttons[8]).displayText());
+																window.draw((*buttons[9]).displayText());
+																if (event.type == sf::Event::TextEntered)
+																{
+																				// отсекаем не ASCII символы
+																				if (event.text.unicode < 128)
+																				{
+																								(*buttons[10]).add_letter(static_cast<char>(event.text.unicode));
+																				}
+																}
+																if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
+																				(*buttons[10]).delete_letter();
+																}
+																window.draw((*buttons[10]).displayText());
+																if ((*buttons[11]).ifpress(sf::Mouse::getPosition(window))) {
+																				(*buttons[11]).changeTextColor();
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								if (check_press(chooseflags, 0, 2) && check_press(chooseflags, 3, 4), !(*buttons[10]).isempty()) {
+																												//////////////////////creategame
+																								}
+																				}
+																				colorflags[11] = true;
+																}
+																if_mouse_not_on_button((*buttons[11]), window, colorflags[11]);
+																window.draw((*buttons[11]).displayText());
+																if (check_press(chooseflags, 3, 4)) {
+																				window.draw((*buttons[7]).displayText());
+																				window.draw((*buttons[6]).displayText());
+																}
+																else {
+																				if_mouse_not_on_button((*buttons[7]), window, colorflags[7]);
+																				window.draw((*buttons[7]).displayText());
+																				if_mouse_not_on_button((*buttons[6]), window, colorflags[6]);
+																				window.draw((*buttons[6]).displayText());
+																}
+																if (check_press(chooseflags, 0, 2)) {
+																				window.draw((*buttons[5]).displayText());
+																				window.draw((*buttons[4]).displayText());
+																				window.draw((*buttons[3]).displayText());
+																}
+																else {
+																				if_mouse_not_on_button((*buttons[5]), window, colorflags[5]);
+																				window.draw((*buttons[5]).displayText());
+																				if_mouse_not_on_button((*buttons[4]), window, colorflags[4]);
+																				window.draw((*buttons[4]).displayText());
+																				if_mouse_not_on_button((*buttons[3]), window, colorflags[3]);
+																				window.draw((*buttons[3]).displayText());
+																}
 												}
+												if (joinflag) {
+																window.draw((*buttons[9]).displayText());
+																if (event.type == sf::Event::TextEntered)
+																{
+																				// отсекаем не ASCII символы
+																				if (event.text.unicode < 128)
+																				{
+																								(*buttons[10]).add_letter(static_cast<char>(event.text.unicode));
+																				}
+																}
+																if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
+																				(*buttons[10]).delete_letter();
+																}
+																window.draw((*buttons[10]).displayText());
+																if ((*buttons[12]).ifpress(sf::Mouse::getPosition(window))) {
+																				(*buttons[12]).changeTextColor();
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								if (!(*buttons[10]).isempty()) {
+																												//////////////////////joingame
+																								}
+																				}
+																				colorflags[12] = true;
+																}
+																if ((*buttons[8]).ifpress(sf::Mouse::getPosition(window))) {
+																				(*buttons[8]).changeTextColor();
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								joinflag = false;
+																								(*buttons[10]).emptytext();
+																				}
+																				colorflags[8] = true;
+																}
+																if_mouse_not_on_button((*buttons[8]), window, colorflags[8]);
+																window.draw((*buttons[8]).displayText());
+																if_mouse_not_on_button((*buttons[12]), window, colorflags[12]);
+																window.draw((*buttons[12]).displayText());
+												}
+												window.draw((*buttons[0]).displayText());
+												window.draw((*buttons[1]).displayText());
+												window.draw((*buttons[2]).displayText());
+												window.display();
+												window.clear();
 								}
-								it_but = buttons.begin();
-								window.draw(buttons[0].displayText());
-								++it_but;
-								window.draw(buttons[1].displayText());
-								++it_but;
-								window.draw((*it_but).displayText());
-								window.display();
-								window.clear();
-								it_but = buttons.begin();
 				}
 }
 void MainMenu::print_table(sf::RenderWindow& window) {

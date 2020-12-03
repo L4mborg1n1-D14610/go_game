@@ -18,8 +18,10 @@ public:
     bool ifpress(sf::Vector2i _mouse) const;
     sf::RectangleShape displayButton() const;
     sf::Text displayText() const;
-    void add_letter(char a);
-    void delete_letter(char a);
+    void add_letter(char&& a);
+    void delete_letter();
     void changeTextColor();
     void changeTextColorBack();
+    void emptytext();
+    bool isempty();
 };

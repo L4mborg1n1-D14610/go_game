@@ -4,6 +4,7 @@
 #include <list>
 #include <utility>
 #include <iostream>
+#include <memory>
 #include "Button.hpp"
 #include "TableStone.hpp"
 

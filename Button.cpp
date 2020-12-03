@@ -26,7 +26,7 @@ Button::Button(double _x_t, double _y_t, int _text_size) {
     y_t = _y_t;
 
     font.loadFromFile("fonts/RodchenkoBTT.ttf"); //загружаем шрифт
-    text.setString("qqqq");
+    text.setString("");
     text.setFont(font);							// устанавливаем шрифт
     text.setCharacterSize(_text_size); 					// устанавливаем размер текста
 
@@ -59,13 +59,13 @@ sf::RectangleShape Button::displayButton() const{
 sf::Text Button::displayText() const{
     return text;
 }
-void Button::add_letter(char a) {
+void Button::add_letter(char&& a) {
     if (str_text.length() < 7) {
         str_text += a;
         text.setString(str_text);
     }
 }
-void Button::delete_letter(char a) {
+void Button::delete_letter() {
     if (!str_text.empty()) {
         str_text.pop_back();
         text.setString(str_text);
@@ -76,4 +76,11 @@ void Button::changeTextColor() {
 }
 void Button::changeTextColorBack() {
     text.setFillColor(sf::Color::Red);
+}
+void Button::emptytext() {
+    str_text.clear();
+    text.setString("");
+}
+bool Button::isempty() {
+    return str_text.empty();
 }
