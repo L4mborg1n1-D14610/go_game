@@ -114,7 +114,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 				}
 				bool createflag = false; //флаг для изменения цвета кнопок
 				bool joinflag = false;
-				while (window.isOpen())		{
+				while (window.isOpen()) {
 								sf::Event event;
 								while (window.pollEvent(event)) {
 												if (event.type == sf::Event::Closed) {
@@ -268,6 +268,8 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																if ((*buttons[11]).ifpress(sf::Mouse::getPosition(window))) {
 																				(*buttons[11]).changeTextColor();
 																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																								menu_table_flag = false;
+																								break;
 																								if (check_press(chooseflags, 0, 2) && check_press(chooseflags, 3, 4), !(*buttons[10]).isempty()) {
 																												//////////////////////creategame
 																								}
@@ -342,6 +344,9 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 												window.display();
 												window.clear();
 								}
+								if (!menu_table_flag) {
+												break;
+								}
 				}
 }
 void MainMenu::print_table(sf::RenderWindow& window) {
@@ -409,16 +414,16 @@ void MainMenu::print_window(sf::RenderWindow& window) {
 								else {
 												Table t(board_size);
 												table = &t;
-												sf::IpAddress ip = sf::IpAddress::getLocalAddress();	//Локальный ip Адресс
-												std::cout << ip;
-												if (server_flag) {
-																sf::TcpListener listener;
-																listener.listen(2001);
-																listener.accept(socket);
-												}	else {
-																// write ip in programm
-																socket.connect(ip, 2001);
-												}
+										//		sf::IpAddress ip = sf::IpAddress::getLocalAddress();	//Локальный ip Адресс
+										//		std::cout << ip;
+										//		if (server_flag) {
+										//						sf::TcpListener listener;
+										//						listener.listen(2001);
+										//						listener.accept(socket);
+										//		}	else {
+										//						// write ip in programm
+										//						socket.connect(ip, 2001);
+										//		}
 												print_table(window);
 								}
 				}
