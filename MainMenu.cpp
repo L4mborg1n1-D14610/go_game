@@ -27,7 +27,6 @@ void MainMenu::add_stone(TableStone* stone) {
 								if (stone->check_color()) {
 												list_real_stones.push_back(stone);
 												list_coord_white_stones.push_back(stone->stone_coords(table));
-												this->color = false;
 												delete_flag = true;
 												suicide_flag = false;
 												while (delete_flag == true) {
@@ -54,7 +53,6 @@ void MainMenu::add_stone(TableStone* stone) {
 								}	else {
 												list_real_stones.push_back(stone);
 												list_coord_black_stones.push_back(stone->stone_coords(table));
-												this->color = true;
 												delete_flag = true;
 												suicide_flag = false;
 												while (delete_flag == true) {
@@ -372,14 +370,8 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																												if (creator) {
 																																std::cout << "connected!";
 																																packet >> color >> board_size;
-																																creator = false;
-																																packet.clear();
-																																socket.receive(packet);
-																																packet >> creator;
-																																if (creator) {
-																																				menu_table_flag = false;
-																																				break;
-																																}
+																																menu_table_flag = false;
+																																break;
 																												}
 																								}
 																				}
@@ -418,6 +410,15 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 				TableStone* helperstone = new TableStone();
 				TableStone _pushed_stone(sf::Mouse::getPosition(window), *table, this->color);
 				TableStone* pushed_stone = new TableStone();
+				if (!color) {
+								sf::Packet packet;
+								socket.receive(packet);
+								int x;
+								int y;
+								packet >> x >> y;
+								TableStone* _stone = new TableStone(x, y, *table, !color);
+								list_real_stones.push_back(_stone);
+				}
 				while (window.isOpen())
 				{
 								sf::Event event;

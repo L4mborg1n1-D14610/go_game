@@ -17,7 +17,8 @@ private:
     std::vector<std::shared_ptr<playtable>> games; // vector for ready games
     std::vector<std::shared_ptr<playtable>> lobbys; //vector for waiting games
   // sf::TcpSocket socket;
-    sf::IpAddress ip;
+    sf::IpAddress ip_local;
+    sf::IpAddress ip_public;
     sf::TcpListener listener;
     sf::SocketSelector selector;  
     std::list<std::string> lob_names;

@@ -8,8 +8,9 @@ playtable::playtable(sf::TcpSocket* _socket, std::string& _name, bool& _color, i
     table_size = size;
     game_begin = false;
 }
-void playtable::add_socket(sf::TcpSocket& _socket) {
-    selector.add(_socket);
+void playtable::add_socket(std::shared_ptr<sf::TcpSocket>&& _socket) {
+    selector.add(*_socket);
+    players.push_back(std::shared_ptr<sf::TcpSocket>(_socket));
     game_begin = true;
 }
 std::string playtable::return_lob_name() {
@@ -29,5 +30,8 @@ std::shared_ptr<sf::TcpSocket> playtable::get_second_socket() {
 }
 bool playtable::get_game_status() {
     return game_begin;
+}
+int playtable::get_tokens_size() {
+    return players.size();
 }
 
