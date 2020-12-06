@@ -48,6 +48,7 @@ void MainMenu::add_stone(TableStone* stone) {
 																				packet >> x >> y;
 																				TableStone* _stone = new TableStone(x, y, *table, !color);
 																				list_real_stones.push_back(_stone);
+																				break;
 																}
 												}
 								}	else {
@@ -74,6 +75,7 @@ void MainMenu::add_stone(TableStone* stone) {
 																				packet >> x >> y;
 																				TableStone* _stone = new TableStone(x, y, *table, !color);
 																				list_real_stones.push_back(_stone);
+																				break;
 																}
 												}
 								}
