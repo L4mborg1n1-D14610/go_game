@@ -24,4 +24,5 @@ public:
     void changeTextColorBack();
     void emptytext();
     bool isempty();
+    std::string get_text();
 };

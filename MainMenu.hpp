@@ -19,16 +19,15 @@ private:
     int scrX;
     int scrY;
     bool color;
-
     int middlescreenX(int& x);
     int middlescreenY(int& y);
     void if_mouse_not_on_button(Button& button, sf::RenderWindow& window, bool flag);
     bool delete_flag;   //флаг, что удалились камни
     bool suicide_flag;   //флаг попытки суицида камня
-    bool server_flag; //true - server, false - client
     sf::IpAddress ip;
-    sf::TcpSocket socket;//программный интерфейс для обеспечения обмена данными между процессами
-    sf::Packet packet;
+    sf::TcpSocket socket;
+    std::string loby_name;
+    bool host_flag;
 public:
     MainMenu(int& scrX, int& scrY);
     MainMenu(Table& _table);
@@ -46,7 +45,6 @@ public:
     bool NOT_VACANT(int& x, int& y, bool&& color);
     bool VACANT(int&& x, int&& y);
     bool NOT_VACANT_ANY_LIST(int& x, int& y, std::list<std::pair<int, int>> _list);
-
 };
 std::pair<int, int> return_stone_coordinate(const std::pair<int, int>& _pair, int& tablesize);
 std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x);

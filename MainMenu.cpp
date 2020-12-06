@@ -36,8 +36,18 @@ void MainMenu::add_stone(TableStone* stone) {
 																				//////////////////////////////////
 																				list_real_stones.erase(--list_real_stones.end());
 																				list_coord_white_stones.erase(--list_coord_white_stones.end());
-																				this->color = true;
 																				break;
+																}	else {
+																				sf::Packet packet;
+																				packet << stone->get_x() << stone->get_y();
+																				socket.send(packet);
+																				packet.clear();
+																				socket.receive(packet);
+																				int x;
+																				int y;
+																				packet >> x >> y;
+																				TableStone* _stone = new TableStone(x, y, *table, !color);
+																				list_real_stones.push_back(_stone);
 																}
 												}
 								}	else {
@@ -52,8 +62,18 @@ void MainMenu::add_stone(TableStone* stone) {
 																				//////////////////////////////////
 																				list_real_stones.erase(--list_real_stones.end());
 																				list_coord_black_stones.erase(--list_coord_black_stones.end());
-																				this->color = false;
 																				break;
+																}	else {
+																				sf::Packet packet;
+																				packet << stone->get_x() << stone->get_y();
+																				socket.send(packet);
+																				packet.clear();
+																				socket.receive(packet);
+																				int x;
+																				int y;
+																				packet >> x >> y;
+																				TableStone* _stone = new TableStone(x, y, *table, !color);
+																				list_real_stones.push_back(_stone);
 																}
 												}
 								}
@@ -114,6 +134,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 				}
 				bool createflag = false; //флаг для изменения цвета кнопок
 				bool joinflag = false;
+				menu_table_flag = true;
 				while (window.isOpen()) {
 								sf::Event event;
 								while (window.pollEvent(event)) {
@@ -165,8 +186,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																								chooseflags[0] = true;
 																								(*buttons[3]).changeTextColor();
 																								board_size = 1;
-																								menu_table_flag = false;
-																								server_flag = true;
 																				}
 																				colorflags[3] = true;
 																}
@@ -186,8 +205,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																								chooseflags[1] = true;
 																								(*buttons[4]).changeTextColor();
 																								board_size = 2;
-																								menu_table_flag = false;
-																								server_flag = true;
 																				}
 																				colorflags[4] = true;
 																}
@@ -207,8 +224,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																								chooseflags[2] = true;
 																								(*buttons[5]).changeTextColor();
 																								board_size = 3;
-																								menu_table_flag = false;
-																								server_flag = true;
 																				}
 																				colorflags[5] = true;
 																}
@@ -268,10 +283,30 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																if ((*buttons[11]).ifpress(sf::Mouse::getPosition(window))) {
 																				(*buttons[11]).changeTextColor();
 																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																								menu_table_flag = false;
-																								break;
-																								if (check_press(chooseflags, 0, 2) && check_press(chooseflags, 3, 4), !(*buttons[10]).isempty()) {
+																								if (check_press(chooseflags, 0, 2) && check_press(chooseflags, 3, 4) && !(*buttons[10]).isempty()) {
 																												//////////////////////creategame
+																												loby_name = (*buttons[10]).get_text();
+																												host_flag = true;
+																												ip = "192.168.1.21";
+																												sf::Packet packet;
+																												socket.connect(ip, 5001);
+																												packet << host_flag << loby_name << color << board_size;
+																												socket.send(packet);
+																												packet.clear();
+																												socket.receive(packet);
+																												bool creator; //true - loby is created
+																												packet >> creator;
+																												if (creator) {
+																																std::cout << "connected!";
+																																creator = false;
+																																packet.clear();
+																																socket.receive(packet);
+																																packet >> creator;
+																																if (creator) {
+																																				menu_table_flag = false;
+																																				break;
+																																}
+																												}
 																								}
 																				}
 																				colorflags[11] = true;
@@ -321,6 +356,29 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 																								if (!(*buttons[10]).isempty()) {
 																												//////////////////////joingame
+																												loby_name = (*buttons[10]).get_text();
+																												host_flag = false;
+																												ip = "192.168.1.21";
+																												sf::Packet packet;
+																												socket.connect(ip, 5001);
+																												packet << host_flag << loby_name;
+																												socket.send(packet);
+																												packet.clear();
+																												socket.receive(packet);
+																												bool creator; //true - loby is created
+																												packet >> creator;
+																												if (creator) {
+																																std::cout << "connected!";
+																																packet >> color >> board_size;
+																																creator = false;
+																																packet.clear();
+																																socket.receive(packet);
+																																packet >> creator;
+																																if (creator) {
+																																				menu_table_flag = false;
+																																				break;
+																																}
+																												}
 																								}
 																				}
 																				colorflags[12] = true;
@@ -352,7 +410,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 void MainMenu::print_table(sf::RenderWindow& window) {
 				Button Push_Stone(10 * scrX / 11, scrY / 20, "Add Stone", 50);
 				bool push_flag = false;
-				this->color = true;
 				bool begin_flag = false;
 				bool dontpush_stone_flag = false;
 				TableStone _helperstone(sf::Mouse::getPosition(window), *table, this->color);
@@ -414,16 +471,6 @@ void MainMenu::print_window(sf::RenderWindow& window) {
 								else {
 												Table t(board_size);
 												table = &t;
-										//		sf::IpAddress ip = sf::IpAddress::getLocalAddress();	//Локальный ip Адресс
-										//		std::cout << ip;
-										//		if (server_flag) {
-										//						sf::TcpListener listener;
-										//						listener.listen(2001);
-										//						listener.accept(socket);
-										//		}	else {
-										//						// write ip in programm
-										//						socket.connect(ip, 2001);
-										//		}
 												print_table(window);
 								}
 				}
@@ -500,7 +547,8 @@ bool MainMenu::check_neighbours(int& x, int& y,	bool& color, bool& last_color) {
 								break;
 				case 3: tablesize = 18;
 								break;
-				default: break;
+				default: 
+								;
 				}
 				if (NOT_VACANT(x, y, color)) {
 								if (x == 0 && y == 0) {

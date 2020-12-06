@@ -84,3 +84,6 @@ void Button::emptytext() {
 bool Button::isempty() {
     return str_text.empty();
 }
+std::string Button::get_text() {
+    return str_text;
+}

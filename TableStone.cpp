@@ -37,6 +37,35 @@ TableStone::TableStone(sf::Vector2i&& _mouse, Table& table, bool _stone_color) {
     }
 
 };
+TableStone::TableStone(int& x, int& y, Table& table, bool&& _stone_color) {
+    x_t = x;
+    y_t = y;
+    stone_color = _stone_color;
+    switch (table.return_tablesize()) {
+    case 1:
+        radius = 38;
+        size = 9;
+        break;
+    case 2:
+        radius = 28;
+        size = 13;
+        break;
+    case 3:
+        radius = 20;
+        size = 19;
+        break;
+    default: break;
+    }
+    stone.setPosition(x_t - radius, y_t - radius);
+    if (stone_color) {
+        Tablestone_texture.loadFromFile("Images/WhiteTexture.png");
+    }
+    else {
+        Tablestone_texture.loadFromFile("Images/BlackTexture.png");
+    }
+    stone.setTexture(&Tablestone_texture);
+}
+
 TableStone::TableStone(TableStone& _stone) {
     this->x_t = _stone.x_t;
     this->y_t = _stone.y_t;
@@ -68,7 +97,7 @@ bool TableStone::operator ==(TableStone&& _stone) {
         return false;
     }
 }
-void TableStone::change_tablestone(sf::Vector2i&& _mouse, Table& table, bool _stone_color) {
+void TableStone::change_tablestone(sf::Vector2i&& _mouse, Table& table, bool& _stone_color) {
     this->x_t = std::get<0>(Checkcoordinate(_mouse, radius, size, table));
     this->y_t = std::get<1>(Checkcoordinate(_mouse, radius, size, table));
     if (x_t && y_t) {
@@ -120,4 +149,10 @@ int TableStone::stone_x_coords(Table* _table) {
 }
 int TableStone::stone_y_coords(Table* _table) {
     return (this->stone_coords(_table)).second;
+}
+int TableStone::get_x() {
+    return this->x_t;
+}
+int TableStone::get_y() {
+    return this->y_t;
 }
