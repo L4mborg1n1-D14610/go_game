@@ -56,11 +56,11 @@ TableStone::TableStone(int& x, int& y, Table& table, bool&& _stone_color) {
         break;
     default: break;
     }
+    stone.setRadius(radius);
     stone.setPosition(x_t - radius, y_t - radius);
     if (stone_color) {
         Tablestone_texture.loadFromFile("Images/WhiteTexture.png");
-    }
-    else {
+    } else {
         Tablestone_texture.loadFromFile("Images/BlackTexture.png");
     }
     stone.setTexture(&Tablestone_texture);

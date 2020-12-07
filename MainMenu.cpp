@@ -47,6 +47,11 @@ void MainMenu::add_stone(TableStone* stone) {
 																				packet >> x >> y;
 																				TableStone* _stone = new TableStone(x, y, *table, !color);
 																				list_real_stones.push_back(_stone);
+																				list_coord_black_stones.push_back(_stone->stone_coords(table));
+																				delete_flag = true;
+																				while (delete_flag == true) {
+																								if_delete_stones(_stone->check_color());
+																				}
 																				break;
 																}
 												}
@@ -73,6 +78,11 @@ void MainMenu::add_stone(TableStone* stone) {
 																				packet >> x >> y;
 																				TableStone* _stone = new TableStone(x, y, *table, !color);
 																				list_real_stones.push_back(_stone);
+																				list_coord_white_stones.push_back(_stone->stone_coords(table));
+																				delete_flag = true;
+																				while (delete_flag == true) {
+																								if_delete_stones(_stone->check_color());
+																				}
 																				break;
 																}
 												}
@@ -418,6 +428,7 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 								packet >> x >> y;
 								TableStone* _stone = new TableStone(x, y, *table, !color);
 								list_real_stones.push_back(_stone);
+								list_coord_white_stones.push_back(_stone->stone_coords(table));
 				}
 				while (window.isOpen())
 				{
