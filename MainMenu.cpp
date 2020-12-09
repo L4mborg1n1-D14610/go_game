@@ -17,6 +17,7 @@ MainMenu::MainMenu(int& scrX, int& scrY) {
 				this->scrY = scrY;
 				menu_table_flag = true;
 				board_size = 0;
+				waiting_answer_flag = false;
 }
 MainMenu::MainMenu(Table& _table) {
 				table = &_table;
@@ -29,65 +30,63 @@ void MainMenu::add_stone(TableStone* stone) {
 												list_coord_white_stones.push_back(stone->stone_coords(table));
 												delete_flag = true;
 												suicide_flag = false;
-												while (delete_flag == true) {
+												while (delete_flag) {
 																if_delete_stones(stone->check_color());
-																if (suicide_flag == true) {
+																if (suicide_flag) {
 																				//////////////////////////////////
 																				list_real_stones.erase(--list_real_stones.end());
 																				list_coord_white_stones.erase(--list_coord_white_stones.end());
 																				break;
-																}	else {
-																				sf::Packet packet;
-																				packet << stone->get_x() << stone->get_y();
-																				socket.send(packet);
-																				packet.clear();
-																				socket.receive(packet);
-																				int x;
-																				int y;
-																				packet >> x >> y;
-																				TableStone* _stone = new TableStone(x, y, *table, !color);
-																				list_real_stones.push_back(_stone);
-																				list_coord_black_stones.push_back(_stone->stone_coords(table));
-																				delete_flag = true;
-																				while (delete_flag == true) {
-																								if_delete_stones(_stone->check_color());
-																				}
-																				break;
-																}
+																}	
 												}
 								}	else {
 												list_real_stones.push_back(stone);
 												list_coord_black_stones.push_back(stone->stone_coords(table));
 												delete_flag = true;
 												suicide_flag = false;
-												while (delete_flag == true) {
+												while (delete_flag) {
 																if_delete_stones(stone->check_color());
-																if (suicide_flag == true) {
+																if (suicide_flag) {
 																				//////////////////////////////////
 																				list_real_stones.erase(--list_real_stones.end());
 																				list_coord_black_stones.erase(--list_coord_black_stones.end());
 																				break;
-																}	else {
-																				sf::Packet packet;
-																				packet << stone->get_x() << stone->get_y();
-																				socket.send(packet);
-																				packet.clear();
-																				socket.receive(packet);
-																				int x;
-																				int y;
-																				packet >> x >> y;
-																				TableStone* _stone = new TableStone(x, y, *table, !color);
-																				list_real_stones.push_back(_stone);
-																				list_coord_white_stones.push_back(_stone->stone_coords(table));
-																				delete_flag = true;
-																				while (delete_flag == true) {
-																								if_delete_stones(_stone->check_color());
-																				}
-																				break;
-																}
+																}	
 												}
 								}
+								if (!suicide_flag) {
+												std::thread th(wait_stone, this, stone);
+												th.detach();
+								}
 				}
+}
+void MainMenu::wait_stone(MainMenu* obj, TableStone* stone) {
+				obj->waiting_answer_flag = true;
+				sf::Packet packet;
+				packet << stone->get_x() << stone->get_y();
+				obj->socket.send(packet);
+				std::cout << "packet sended\n";
+				packet.clear();
+			//	if (obj->socket.receive(packet) == sf::Socket::Done) {
+				obj->socket.receive(packet);
+				std::cout << "packet get\n";
+				int x;
+				int y;
+				packet >> x >> y;
+				TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
+				obj->list_real_stones.push_back(_stone);
+				if (obj->color) {
+								obj->list_coord_black_stones.push_back(_stone->stone_coords(obj->table));
+				}	else {
+								obj->list_coord_white_stones.push_back(_stone->stone_coords(obj->table));
+				}
+				obj->delete_flag = true;
+				while (obj->delete_flag) {
+								obj->if_delete_stones(_stone->check_color());
+				}
+				obj->waiting_answer_flag = false;
+		//		}
+				std::cout << "end of waiting\n";
 }
 std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x) {
 				for (auto i = 0; i < x; ++i) {
@@ -153,7 +152,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 												}
 												if ((*buttons[0]).ifpress(sf::Mouse::getPosition(window))) {
 																(*buttons[0]).changeTextColor();
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																				createflag = true;
 																				joinflag = false;
 																				(*buttons[10]).emptytext();
@@ -163,7 +162,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 												if_mouse_not_on_button((*buttons[0]), window, colorflags[0]);
 												if ((*buttons[1]).ifpress(sf::Mouse::getPosition(window))) {
 																(*buttons[1]).changeTextColor();
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																				joinflag = true;
 																				createflag = false;
 																				(*buttons[10]).emptytext();
@@ -173,7 +172,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 												if_mouse_not_on_button((*buttons[1]), window, colorflags[1]);
 												if ((*buttons[2]).ifpress(sf::Mouse::getPosition(window))) {
 																(*buttons[2]).changeTextColor();
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																				window.close();
 																}
 																colorflags[2] = true;
@@ -184,7 +183,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				if (!check_press(chooseflags, 0, 2)) {
 																								(*buttons[3]).changeTextColor();
 																				}
-																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								if (chooseflags[1]) {
 																												(*buttons[4]).changeTextColorBack();
 																												chooseflags[1] = false;
@@ -203,7 +202,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				if (!check_press(chooseflags, 0, 2)) {
 																								(*buttons[4]).changeTextColor();
 																				}
-																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								if (chooseflags[0]) {
 																												(*buttons[3]).changeTextColorBack();
 																												chooseflags[0] = false;
@@ -222,7 +221,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				if (!check_press(chooseflags, 0, 2)) {
 																								(*buttons[5]).changeTextColor();
 																				}
-																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								if (chooseflags[0]) {
 																												(*buttons[3]).changeTextColorBack();
 																												chooseflags[0] = false;
@@ -241,7 +240,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				if (!check_press(chooseflags, 3, 4)) {
 																								(*buttons[6]).changeTextColor();
 																				}
-																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								if (chooseflags[4]) {
 																												(*buttons[7]).changeTextColorBack();
 																												chooseflags[4] = false;
@@ -256,7 +255,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				if (!check_press(chooseflags, 3, 4)) {
 																								(*buttons[7]).changeTextColor();
 																				}
-																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								if (chooseflags[3]) {
 																												(*buttons[6]).changeTextColorBack();
 																												chooseflags[3] = false;
@@ -269,7 +268,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																}
 																if ((*buttons[8]).ifpress(sf::Mouse::getPosition(window))) {
 																				(*buttons[8]).changeTextColor();
-																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								createflag = false;
 																								(*buttons[10]).emptytext();
 																				}
@@ -278,7 +277,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																if_mouse_not_on_button((*buttons[8]), window, colorflags[8]);
 																window.draw((*buttons[8]).displayText());
 																window.draw((*buttons[9]).displayText());
-																if (event.type == sf::Event::TextEntered)
+																if (event.type == sf::Event::TextEntered && !waiting_answer_flag)
 																{
 																				// отсекаем не ASCII символы
 																				if (event.text.unicode < 128)
@@ -287,36 +286,25 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				}
 																}
 																if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
-																				(*buttons[10]).delete_letter();
+																				if (!waiting_answer_flag) {
+																								(*buttons[10]).delete_letter();
+																				}	else {
+																				//				th.detach();
+																								waiting_answer_flag = false;
+																				}
 																}
 																window.draw((*buttons[10]).displayText());
-																if ((*buttons[11]).ifpress(sf::Mouse::getPosition(window))) {
+																if ((*buttons[11]).ifpress(sf::Mouse::getPosition(window)) && !waiting_answer_flag) {
 																				(*buttons[11]).changeTextColor();
-																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								if (check_press(chooseflags, 0, 2) && check_press(chooseflags, 3, 4) && !(*buttons[10]).isempty()) {
 																												//////////////////////creategame
 																												loby_name = (*buttons[10]).get_text();
 																												host_flag = true;
-																												ip = "192.168.1.21";
-																												sf::Packet packet;
-																												socket.connect(ip, 5001);
-																												packet << host_flag << loby_name << color << board_size;
-																												socket.send(packet);
-																												packet.clear();
-																												socket.receive(packet);
-																												bool creator; //true - loby is created
-																												packet >> creator;
-																												if (creator) {
-																																std::cout << "connected!";
-																																creator = false;
-																																packet.clear();
-																																socket.receive(packet);
-																																packet >> creator;
-																																if (creator) {
-																																				menu_table_flag = false;
-																																				break;
-																																}
-																												}
+																												creator = false;
+																												std::thread th(wait_connect, this);
+																												th.detach();
+																												std::cout << "jointed";
 																								}
 																				}
 																				colorflags[11] = true;
@@ -375,7 +363,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																												socket.send(packet);
 																												packet.clear();
 																												socket.receive(packet);
-																												bool creator; //true - loby is created
 																												packet >> creator;
 																												if (creator) {
 																																std::cout << "connected!";
@@ -390,8 +377,12 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																if ((*buttons[8]).ifpress(sf::Mouse::getPosition(window))) {
 																				(*buttons[8]).changeTextColor();
 																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-																								joinflag = false;
-																								(*buttons[10]).emptytext();
+																								if (!waiting_answer_flag) {
+																												joinflag = false;
+																												(*buttons[10]).emptytext();
+																								} else {
+
+																								}
 																				}
 																				colorflags[8] = true;
 																}
@@ -405,11 +396,44 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 												window.draw((*buttons[2]).displayText());
 												window.display();
 												window.clear();
+												if (!menu_table_flag) {
+																break;
+												}
 								}
 								if (!menu_table_flag) {
 												break;
 								}
 				}
+}
+void MainMenu::wait_connect(MainMenu* obj) {
+				obj->waiting_answer_flag = true;
+				obj->ip = "192.168.1.21";
+				sf::Packet packet;
+				obj->socket.connect(obj->ip, 5001);
+				packet << obj->host_flag << obj->loby_name << obj->color << obj->board_size;
+				obj->socket.send(packet);
+				packet.clear();
+				obj->socket.receive(packet);
+				packet >> obj->creator;
+				if (obj->creator) {
+								packet.clear();
+								obj->socket.receive(packet);
+								packet >> obj->creator;
+				}
+				obj->waiting_answer_flag = false;
+				obj->menu_table_flag = false;
+}
+void MainMenu::wait_first_stone(MainMenu* obj) {
+				obj->waiting_answer_flag = true;
+				sf::Packet packet;
+				obj->socket.receive(packet);
+				int x;
+				int y;
+				packet >> x >> y;
+				TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
+				obj->list_real_stones.push_back(_stone);
+				obj->list_coord_white_stones.push_back(_stone->stone_coords(obj->table));
+				obj->waiting_answer_flag = false;
 }
 void MainMenu::print_table(sf::RenderWindow& window) {
 				Button Push_Stone(10 * scrX / 11, scrY / 20, "Add Stone", 50);
@@ -421,14 +445,8 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 				TableStone _pushed_stone(sf::Mouse::getPosition(window), *table, this->color);
 				TableStone* pushed_stone = new TableStone();
 				if (!color) {
-								sf::Packet packet;
-								socket.receive(packet);
-								int x;
-								int y;
-								packet >> x >> y;
-								TableStone* _stone = new TableStone(x, y, *table, !color);
-								list_real_stones.push_back(_stone);
-								list_coord_white_stones.push_back(_stone->stone_coords(table));
+								std::thread th(wait_first_stone, this);
+								th.detach();
 				}
 				while (window.isOpen())
 				{
@@ -440,7 +458,7 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 												}
 												window.draw((*table).displaytablesprite());
 												if ((*table).checkStoneCursor(sf::Mouse::getPosition(window))) {
-																if (event.type == event.MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left) {
+																if (event.type == event.MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left && !waiting_answer_flag) {
 
 																				if (*pushed_stone == TableStone(sf::Mouse::getPosition(window), *table, color)) {
 																								dontpush_stone_flag = false;																				}
@@ -450,7 +468,7 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 																								dontpush_stone_flag = true;
 																				}
 																}
-															 if (!dontpush_stone_flag) {
+															 if (!dontpush_stone_flag && !waiting_answer_flag) {
 																								helperstone = new TableStone(sf::Mouse::getPosition(window), *table, color);
 																								window.draw(helperstone->displaystone());
 																}
@@ -461,7 +479,7 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 												if_mouse_not_on_button(Push_Stone, window, push_flag);
 												if (Push_Stone.ifpress(sf::Mouse::getPosition(window))) {
 																Push_Stone.changeTextColor();
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && begin_flag && dontpush_stone_flag) {
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && begin_flag && dontpush_stone_flag && !waiting_answer_flag) {
 																				add_stone(pushed_stone);
 																				dontpush_stone_flag = false;
 																}
@@ -500,8 +518,7 @@ void MainMenu::if_delete_stones(bool&& color) {
 												if (check_neighbours(x, y, _color, color)) {
 																delete_flag = true;
 																return;
-												}
-												else {
+												}	else {
 																delete_flag = false;
 												}
 								}
@@ -514,8 +531,7 @@ void MainMenu::if_delete_stones(bool&& color) {
 																delete_flag = true;
 																suicide_flag = true;
 																return;
-												}
-												else {
+												}	else {
 																delete_flag = false;
 												}
 								}

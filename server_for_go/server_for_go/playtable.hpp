@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Network.hpp>
 #include <string>
-
+#include <iostream>
 class playtable {
 private:
     std::vector<std::shared_ptr<sf::TcpSocket>> players;
@@ -22,5 +22,7 @@ public:
     std::shared_ptr<sf::TcpSocket> get_second_socket();
     bool get_game_status();
     int get_tokens_size();
+    sf::SocketSelector get_selector();
+    void send_data();
 };
 

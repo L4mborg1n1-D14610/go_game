@@ -34,4 +34,25 @@ bool playtable::get_game_status() {
 int playtable::get_tokens_size() {
     return players.size();
 }
+sf::SocketSelector playtable::get_selector() {
+    return selector;
+}
+void playtable::send_data() {
+    if (selector.wait(sf::seconds(10.f))) {
+        std::cout << "deb1\n";
+        sf::Packet packet;
+        if (selector.isReady(*players[0])) {
+            std::cout << "deb2\n";
+            if (players[0]->receive(packet) == sf::Socket::Done) {
+                players[1]->send(packet);
+            }
+        } else {
+            std::cout << "deb3\n";
+            if (players[1]->receive(packet) == sf::Socket::Done) {
+                players[0]->send(packet);
+            }
+        }
+    }
+}
+
 

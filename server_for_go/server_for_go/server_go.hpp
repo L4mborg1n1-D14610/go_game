@@ -16,7 +16,6 @@ private:
     std::vector<std::shared_ptr<sf::TcpSocket>> clients;
     std::vector<std::shared_ptr<playtable>> games; // vector for ready games
     std::vector<std::shared_ptr<playtable>> lobbys; //vector for waiting games
-  // sf::TcpSocket socket;
     sf::IpAddress ip_local;
     sf::IpAddress ip_public;
     sf::TcpListener listener;
@@ -24,6 +23,7 @@ private:
     std::list<std::string> lob_names;
     static void wait_new(server_go* obj);
     static void clients_handler(server_go* obj);
+    bool new_games_flag;
 public:
     server_go();
 };

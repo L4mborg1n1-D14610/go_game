@@ -5,6 +5,7 @@
 #include <utility>
 #include <iostream>
 #include <memory>
+#include <thread>
 #include "Button.hpp"
 #include "TableStone.hpp"
 
@@ -28,6 +29,8 @@ private:
     sf::TcpSocket socket;
     std::string loby_name;
     bool host_flag;
+    bool waiting_answer_flag; //for threads & block interface
+    bool creator; //true - loby is created
 public:
     MainMenu(int& scrX, int& scrY);
     MainMenu(Table& _table);
@@ -45,6 +48,9 @@ public:
     bool NOT_VACANT(int& x, int& y, bool&& color);
     bool VACANT(int&& x, int&& y);
     bool NOT_VACANT_ANY_LIST(int& x, int& y, std::list<std::pair<int, int>> _list);
+    static void wait_connect(MainMenu* obj);
+    static void wait_stone(MainMenu* obj, TableStone* stone);
+    static void wait_first_stone(MainMenu* obj);
 };
 std::pair<int, int> return_stone_coordinate(const std::pair<int, int>& _pair, int& tablesize);
 std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x);

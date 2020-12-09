@@ -4,6 +4,7 @@ server_go::server_go() {
     ip_public = sf::IpAddress::getPublicAddress();
     std::cout << "Server is running on local ip: " << ip_local
         << "\n public ip: " << ip_public << "\n port: 5001\n";
+    new_games_flag = false;
     std::thread waiting_th(wait_new, this);
     std::thread handler_th(clients_handler, this);
     waiting_th.join();
@@ -46,8 +47,7 @@ void server_go::wait_new(server_go* obj) {
                             packet_client << false;
                             socket->send(packet_client);
                         }
-                    }
-                    else {
+                    } else {
                         auto it = std::find_if(obj->lobbys.begin(), obj->lobbys.end(), [&](const std::shared_ptr<playtable>& pt) {
                             return pt->return_lob_name() == loby_name;
                             });
@@ -62,6 +62,7 @@ void server_go::wait_new(server_go* obj) {
                             obj->clients.push_back(std::shared_ptr<sf::TcpSocket>((*it)->get_second_socket()));
                             packet_client << true << (*it)->get_other_color() << (*it)->get_tablesize();
                             obj->games.push_back(std::shared_ptr<playtable>(*it));
+                            obj->new_games_flag = true;
                             obj->lobbys.erase(it);
                             //message for client true-color-size
                             socket->send(packet_client);
@@ -81,33 +82,89 @@ void server_go::wait_new(server_go* obj) {
 void server_go::clients_handler(server_go* obj) {
     while (true) {
         if (obj->selector.wait(sf::seconds(10.f))) {
-            for (std::vector<std::shared_ptr<sf::TcpSocket>>::iterator it = obj->clients.begin();
-                it != obj->clients.end(); ++it) {
-                if (obj->selector.isReady(**it)) {
-                    sf::Packet packet;
-                    if ((*it)->receive(packet) == sf::Socket::Done) {
-                        sf::Packet packet_client;
-                        int x;
-                        int y;
-                        packet >> x >> y;
-                        packet_client << x << y;
-                        auto it_1 = std::find_if(obj->games.begin(), obj->games.end(), [&](const std::shared_ptr<playtable>& pt) {
-                            return pt->get_first_socket() == *it;
-                            });
-                        if (it_1 != obj->games.end()) {
-                            std::cout << "sended for jointer\n";
-                            ((**it_1).get_second_socket())->send(packet);
-                        }
-                        else {
-                            it_1 = std::find_if(obj->games.begin(), obj->games.end(), [&](const std::shared_ptr<playtable>& pt) {
-                                return pt->get_second_socket() == *it;
-                                });
-                                std::cout << "sended for creator\n";
-                                ((**it_1).get_first_socket())->send(packet);
-                        }
-                    }
-                }
+            std::cout << "deb\n";
+            for (std::vector<std::shared_ptr<playtable>>::iterator it = obj->games.begin();
+                it != obj->games.end(); ++it) {
+                (*it)->send_data();
+  
+                //if ((*it)->get_selector().wait(sf::seconds(10.f))) {
+                //    std::cout << "deb1\n";
+                //    std::shared_ptr<sf::TcpSocket> soc((*it)->get_first_socket());
+                //    sf::Packet packet;
+                //    if (obj->selector.isReady(*soc)) {
+                //        std::cout << "deb2\n";
+                //        if (soc->receive(packet) == sf::Socket::Done) {
+                //            (*it)->get_second_socket()->send(packet);
+                //            break;
+                //        }
+                //    }
+                //    else {
+                //        std::cout << "deb3\n";
+                //        if ((*it)->get_second_socket()->receive(packet) == sf::Socket::Done) {
+                //            soc->send(packet);
+                //            break;
+                //        }
+                //    }
+                //}
             }
         }
     }
+
 }
+/*void server_go::clients_handler(server_go* obj) {
+    while (true) {
+        if (obj->selector.wait(sf::seconds(10.f))) {
+            std::cout << "deb\n";
+            for (std::vector<std::shared_ptr<playtable>>::iterator it = obj->games.begin();
+                it != obj->games.end(); ++it) {
+                if ((*it)->get_selector().wait(sf::seconds(10.f))) {
+                    std::cout << "deb1\n";
+                    std::shared_ptr<sf::TcpSocket> soc((*it)->get_first_socket());
+                    sf::Packet packet;
+                    if (obj->selector.isReady(*soc)) {
+                        std::cout << "deb2\n";
+                        if (soc->receive(packet) == sf::Socket::Done) {
+                            (*it)->get_second_socket()->send(packet);
+                            break;
+                        }
+                    }
+                    else {
+                        std::cout << "deb3\n";
+                        if ((*it)->get_second_socket()->receive(packet) == sf::Socket::Done) {
+                            soc->send(packet);
+                            break;
+                        }
+                    }
+                }
+
+            }
+            //   for (std::vector<std::shared_ptr<sf::TcpSocket>>::iterator it = obj->clients.begin();
+            //       it != obj->clients.end(); ++it) {
+            //       if (obj->selector.isReady(**it)) {
+            //           sf::Packet packet;
+            //           if ((*it)->receive(packet) == sf::Socket::Done) {
+            //               auto it_1 = std::find_if(obj->games.begin(), obj->games.end(), [&](const std::shared_ptr<playtable>& pt) {
+            //                   return pt->get_first_socket() == *it;
+            //                   });
+            //               if (it_1 != obj->games.end()) {
+            //                   std::cout << "sended for jointer\n";
+            //                   ((**it_1).get_second_socket())->send(packet);
+            //               }
+            //               else {
+            //                   it_1 = std::find_if(obj->games.begin(), obj->games.end(), [&](const std::shared_ptr<playtable>& pt) {
+            //                       return pt->get_second_socket() == *it;
+            //                       });
+            //                   std::cout << "sended for creator\n";
+            //                   ((**it_1).get_first_socket())->send(packet);
+            //               }
+            //           }
+            //       }
+            //       if (obj->new_games_flag) {
+            //           obj->new_games_flag = false;
+            //           break;
+            //       }
+            //   }
+        }
+    }
+    
+}*/
