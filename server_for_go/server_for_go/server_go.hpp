@@ -21,9 +21,10 @@ private:
     sf::TcpListener listener;
     sf::SocketSelector selector;  
     std::list<std::string> lob_names;
+    bool new_games_flag;
     static void wait_new(server_go* obj);
     static void clients_handler(server_go* obj);
-    bool new_games_flag;
+    static void check_disconnect(server_go* obj);
 public:
     server_go();
 };

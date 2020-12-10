@@ -57,23 +57,28 @@ void MainMenu::wait_stone(MainMenu* obj, TableStone* stone) {
 			//	if (obj->socket.receive(packet) == sf::Socket::Done) {
 				obj->socket.receive(packet);
 				std::cout << "packet get\n";
-				int x;
-				int y;
-				packet >> x >> y;
-				TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
-				obj->list_real_stones.push_back(_stone);
-				if (obj->color) {
-								obj->list_coord_black_stones.push_back(_stone->stone_coords(obj->table));
-				}	else {
-								obj->list_coord_white_stones.push_back(_stone->stone_coords(obj->table));
+				packet >> obj->disconnect_flag;
+				if (obj->disconnect_flag) {
+								int x;
+								int y;
+								packet >> x >> y;
+								TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
+								obj->list_real_stones.push_back(_stone);
+								if (obj->color) {
+												obj->list_coord_black_stones.push_back(_stone->stone_coords(obj->table));
+								}
+								else {
+												obj->list_coord_white_stones.push_back(_stone->stone_coords(obj->table));
+								}
+								obj->delete_flag = true;
+								while (obj->delete_flag) {
+												obj->if_delete_stones(_stone->check_color());
+								}
+								obj->waiting_answer_flag = false;
+								obj->changed_score = true;
+								//		}
+								std::cout << "end of waiting\n";
 				}
-				obj->delete_flag = true;
-				while (obj->delete_flag) {
-								obj->if_delete_stones(_stone->check_color());
-				}
-				obj->waiting_answer_flag = false;
-		//		}
-				std::cout << "end of waiting\n";
 }
 void MainMenu::print_menu(sf::RenderWindow& window) {
 				Button creategame(middlescreenX(scrX), middlescreenY(scrY) / 4, "Create Game", 100); //создание кнопок главного меню
@@ -142,7 +147,8 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 												if_mouse_not_on_button((*buttons[1]), window, colorflags[1]);
 												if ((*buttons[2]).ifpress(sf::Mouse::getPosition(window))) {
 																(*buttons[2]).changeTextColor();
-																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				socket.disconnect();
 																				window.close();
 																}
 																colorflags[2] = true;
@@ -259,16 +265,15 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				if (!waiting_answer_flag) {
 																								(*buttons[10]).delete_letter();
 																				}	else {
-																				//				th.detach();
-																								waiting_answer_flag = false;
-																				}
-																}
+ 																								waiting_answer_flag = false;
+																				} 
+																} 
 																window.draw((*buttons[10]).displayText());
 																if ((*buttons[11]).ifpress(sf::Mouse::getPosition(window)) && !waiting_answer_flag) {
 																				(*buttons[11]).changeTextColor();
 																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !waiting_answer_flag) {
 																								if (check_press(chooseflags, 0, 2) && check_press(chooseflags, 3, 4) && !(*buttons[10]).isempty()) {
-																												//////////////////////creategame
+																												//creategame
 																												loby_name = (*buttons[10]).get_text();
 																												host_flag = true;
 																												creator = false;
@@ -309,7 +314,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																window.draw((*buttons[9]).displayText());
 																if (event.type == sf::Event::TextEntered)
 																{
-																				// отсекаем не ASCII символы
 																				if (event.text.unicode < 128)
 																				{
 																								(*buttons[10]).add_letter(static_cast<char>(event.text.unicode));
@@ -323,7 +327,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																				(*buttons[12]).changeTextColor();
 																				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 																								if (!(*buttons[10]).isempty()) {
-																												//////////////////////joingame
+																												//joingame
 																												loby_name = (*buttons[10]).get_text();
 																												host_flag = false;
 																												ip = "192.168.1.21";
@@ -397,19 +401,22 @@ void MainMenu::wait_first_stone(MainMenu* obj) {
 				obj->waiting_answer_flag = true;
 				sf::Packet packet;
 				obj->socket.receive(packet);
-				int x;
-				int y;
-				packet >> x >> y;
-				TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
-				obj->list_real_stones.push_back(_stone);
-				obj->list_coord_white_stones.push_back(_stone->stone_coords(obj->table));
-				obj->waiting_answer_flag = false;
+				packet >> obj->disconnect_flag;
+				if (obj->disconnect_flag) {
+								int x;
+								int y;
+								packet >> x >> y;
+								TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
+								obj->list_real_stones.push_back(_stone);
+								obj->list_coord_white_stones.push_back(_stone->stone_coords(obj->table));
+								obj->waiting_answer_flag = false;
+				}
 }
 void MainMenu::print_table(sf::RenderWindow& window) {
 				white_score = 0;
 				black_score = 0;
-				Button Push_Stone(10 * scrX / 11, scrY / 20, "Add Stone", 50);
-				Button exitbutton(10 * scrX / 11, 18 * scrY / 20, "Exit", 50);
+				Button Push_Stone(1.2 * scrX / 2, 0.9 * scrY / 2, "Add Stone", 75);
+				Button exitbutton(1.2 * scrX / 2, 18 * scrY / 20, "Exit", 50);
 				Button whitebutton(scrX / 2, scrY / 20, "White:", 50);
 				Button whitescorebut(1.1 * scrX / 2, scrY / 20, white_score, 50);
 				Button blackbutton(1.3 * scrX / 2, scrY / 20, "Black:", 50);
@@ -418,6 +425,7 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 				bool begin_flag = false;
 				bool exit_flag = false;
 				bool dontpush_stone_flag = false;
+				disconnect_flag = true;
 				TableStone _helperstone(sf::Mouse::getPosition(window), *table, this->color);
 				TableStone* helperstone = new TableStone();
 				TableStone _pushed_stone(sf::Mouse::getPosition(window), *table, this->color);
@@ -474,6 +482,15 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 																}
 																push_flag = true;
 												}
+												if (changed_score) {
+																whitescorebut.change_text(white_score);
+																blackscorebut.change_text(black_score);
+																changed_score = false;
+												}
+												if (!disconnect_flag) {
+																menu_table_flag = true;
+																break;
+												}
 												for (auto it : list_real_stones) {
 																window.draw((*it).displaystone());
 												}
@@ -484,10 +501,15 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 												window.draw(blackbutton.displayText());
 												window.draw(blackscorebut.displayText());
 												window.display();
-												window.clear();
+												window.clear(sf::Color(210, 155, 52));
 								}
 								if (menu_table_flag) {
 												socket.disconnect();
+												list_real_stones.clear();
+												list_coord_black_stones.clear();
+												list_coord_black_stones.clear();
+												loby_name.clear();
+												creator = false;
 												break;
 								}
 				}

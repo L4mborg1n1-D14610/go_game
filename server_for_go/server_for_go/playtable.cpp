@@ -41,15 +41,22 @@ void playtable::send_data() {
     if (selector.wait(sf::seconds(10.f))) {
         std::cout << "deb1\n";
         sf::Packet packet;
+        sf::Packet packet_client;
+        int x;
+        int y;
         if (selector.isReady(*players[0])) {
             std::cout << "deb2\n";
             if (players[0]->receive(packet) == sf::Socket::Done) {
-                players[1]->send(packet);
+                packet >> x >> y;
+                packet_client << true << x << y;
+                players[1]->send(packet_client);
             }
         } else {
             std::cout << "deb3\n";
             if (players[1]->receive(packet) == sf::Socket::Done) {
-                players[0]->send(packet);
+                packet >> x >> y;
+                packet_client << true << x << y;
+                players[0]->send(packet_client);
             }
         }
     }
