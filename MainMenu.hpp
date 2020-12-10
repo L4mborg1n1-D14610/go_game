@@ -8,6 +8,7 @@
 #include <thread>
 #include "Button.hpp"
 #include "TableStone.hpp"
+#include "for_mainmenu.hpp"
 
 class MainMenu {
 private:
@@ -20,9 +21,6 @@ private:
     int scrX;
     int scrY;
     bool color;
-    int middlescreenX(int& x);
-    int middlescreenY(int& y);
-    void if_mouse_not_on_button(Button& button, sf::RenderWindow& window, bool flag);
     bool delete_flag;   //флаг, что удалились камни
     bool suicide_flag;   //флаг попытки суицида камня
     sf::IpAddress ip;
@@ -31,6 +29,8 @@ private:
     bool host_flag;
     bool waiting_answer_flag; //for threads & block interface
     bool creator; //true - loby is created
+    int white_score;
+    int black_score;
 public:
     MainMenu(int& scrX, int& scrY);
     MainMenu(Table& _table);
@@ -52,5 +52,3 @@ public:
     static void wait_stone(MainMenu* obj, TableStone* stone);
     static void wait_first_stone(MainMenu* obj);
 };
-std::pair<int, int> return_stone_coordinate(const std::pair<int, int>& _pair, int& tablesize);
-std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x);

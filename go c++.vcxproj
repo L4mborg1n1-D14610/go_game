@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="for_mainmenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="math_functions.cpp" />
@@ -150,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.hpp" />
+    <ClInclude Include="for_mainmenu.hpp" />
     <ClInclude Include="MainMenu.hpp" />
     <ClInclude Include="math_functions.hpp" />
     <ClInclude Include="Menu.hpp" />

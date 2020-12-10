@@ -1,17 +1,4 @@
 #include "MainMenu.hpp"
-int MainMenu::middlescreenX(int& x) {
-				return x / 2;
-}
-
-int MainMenu::middlescreenY(int& y) {
-				return y / 2;
-}
-void MainMenu::if_mouse_not_on_button(Button& button, sf::RenderWindow& window, bool flag) {
-				if (flag && !button.ifpress(sf::Mouse::getPosition(window))) {
-								button.changeTextColorBack();
-								flag = false;
-				}
-}
 MainMenu::MainMenu(int& scrX, int& scrY) {
 				this->scrX = scrX;
 				this->scrY = scrY;
@@ -87,23 +74,6 @@ void MainMenu::wait_stone(MainMenu* obj, TableStone* stone) {
 				obj->waiting_answer_flag = false;
 		//		}
 				std::cout << "end of waiting\n";
-}
-std::list<std::pair<int, int>>::iterator& operator+=(std::list < std::pair<int, int>>::iterator& it, int x) {
-				for (auto i = 0; i < x; ++i) {
-								++it;
-				}
-				return it;
-}
-bool check_press(const std::vector<bool>& _vec, int&& a, int&& b) {
-				if (a > b) {
-								std::swap(a, b);
-				}
-				for (; a <= b; ++a) {
-								if (_vec[a]) {
-												return true;
-								}
-				}
-				return false;
 }
 void MainMenu::print_menu(sf::RenderWindow& window) {
 				Button creategame(middlescreenX(scrX), middlescreenY(scrY) / 4, "Create Game", 100); //создание кнопок главного меню
@@ -436,9 +406,17 @@ void MainMenu::wait_first_stone(MainMenu* obj) {
 				obj->waiting_answer_flag = false;
 }
 void MainMenu::print_table(sf::RenderWindow& window) {
+				white_score = 0;
+				black_score = 0;
 				Button Push_Stone(10 * scrX / 11, scrY / 20, "Add Stone", 50);
+				Button exitbutton(10 * scrX / 11, 18 * scrY / 20, "Exit", 50);
+				Button whitebutton(scrX / 2, scrY / 20, "White:", 50);
+				Button whitescorebut(1.1 * scrX / 2, scrY / 20, white_score, 50);
+				Button blackbutton(1.3 * scrX / 2, scrY / 20, "Black:", 50);
+				Button blackscorebut(1.4 * scrX / 2, scrY / 20, black_score, 50);
 				bool push_flag = false;
 				bool begin_flag = false;
+				bool exit_flag = false;
 				bool dontpush_stone_flag = false;
 				TableStone _helperstone(sf::Mouse::getPosition(window), *table, this->color);
 				TableStone* helperstone = new TableStone();
@@ -476,11 +454,22 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 												if (VACANT(pushed_stone->stone_x_coords(table), pushed_stone->stone_y_coords(table)) && begin_flag && dontpush_stone_flag) {
 																window.draw(pushed_stone->displaystone());
 												}
+												if_mouse_not_on_button(exitbutton, window, exit_flag);
+												if (exitbutton.ifpress(sf::Mouse::getPosition(window))) {
+																exitbutton.changeTextColor();
+																if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+																				menu_table_flag = true;
+																				break;
+																}
+																exit_flag = true;
+												}
 												if_mouse_not_on_button(Push_Stone, window, push_flag);
 												if (Push_Stone.ifpress(sf::Mouse::getPosition(window))) {
 																Push_Stone.changeTextColor();
 																if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && begin_flag && dontpush_stone_flag && !waiting_answer_flag) {
 																				add_stone(pushed_stone);
+																				whitescorebut.change_text(white_score);
+																				blackscorebut.change_text(black_score);
 																				dontpush_stone_flag = false;
 																}
 																push_flag = true;
@@ -489,15 +478,24 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 																window.draw((*it).displaystone());
 												}
 												window.draw(Push_Stone.displayText());
+												window.draw(exitbutton.displayText());
+												window.draw(whitebutton.displayText());
+												window.draw(whitescorebut.displayText());
+												window.draw(blackbutton.displayText());
+												window.draw(blackscorebut.displayText());
 												window.display();
 												window.clear();
+								}
+								if (menu_table_flag) {
+												socket.disconnect();
+												break;
 								}
 				}
 }
 
 void MainMenu::print_window(sf::RenderWindow& window) {
 				while (window.isOpen()) {
-								if (menu_table_flag == true) {
+								if (menu_table_flag) {
 												print_menu(window);
 								}
 								else {
@@ -713,8 +711,6 @@ bool MainMenu::check_neighbours(int& x, int& y,	bool& color, bool& last_color) {
 								}
 				  			eated.sort();
 				  			eated.erase(std::unique(eated.begin(), eated.end()), eated.end());
-				//			eat.sort();
-				//			eat.erase(std::unique(eat.begin(), eat.end()), eat.end());
 								if (color != last_color) {
 												for (std::list<std::pair<int, int>>::iterator it = eated.begin(); it != eated.end(); ++it) {
 																delete_stones(*it, color);
@@ -737,16 +733,17 @@ void MainMenu::delete_stones(const std::pair<int, int>& eated, bool& color) {
 				if (color) {
 								list_coord_white_stones.erase(std::find(list_coord_white_stones.begin(),
 												list_coord_white_stones.end(), eated));
+								++black_score;
 				}	else {
 								list_coord_black_stones.erase(std::find(list_coord_black_stones.begin(),
 												list_coord_black_stones.end(), eated));
+								++white_score;
 				}
 }
 bool MainMenu::check_eat_stone(int& x, int& y, bool& color,
 				std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated) {
 				if (NOT_VACANT(x, y, color)) {
 								if (NOT_VACANT_ANY_LIST(x, y, eated)) {
-							//					eated.push_back(std::make_pair(x, y));
 												if (!check_neighbours(x, y, eat, eated, color)) {
 																return true;
 												}
@@ -970,31 +967,5 @@ bool MainMenu::check_neighbours(int& _x, int& _y, std::list<std::pair<int, int>>
 												}
 								}
 								return true;
-				}
-}
-std::pair<int, int> return_stone_coordinate(const std::pair<int, int>& _pair, int& tablesize) {
-				int x;
-				int y;
-				int i;
-				int j;
-				i = _pair.first;
-				j = _pair.second;
-				switch (tablesize) {
-				case 1:
-								x = round(115 + 77.625 * i);
-								y = round(114 + 77.625 * j);
-								return std::make_pair(x, y);
-								break;
-				case 2:
-								x = round(83 + 56.33 * i);
-								y = round(82 + 56.33 * j);
-								return std::make_pair(x, y);
-								break;
-				case 3:
-								x = 59 + 40 * i;
-								y = 60 + 40 * j;
-								return std::make_pair(x, y);
-								break;
-				default: break;
 				}
 }
