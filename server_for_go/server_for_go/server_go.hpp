@@ -28,4 +28,3 @@ private:
 public:
     server_go();
 };
-

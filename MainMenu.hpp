@@ -13,7 +13,7 @@
 class MainMenu {
 private:
     Table* table;
-    std::list<TableStone*> list_real_stones;
+    std::list<std::shared_ptr<TableStone>> list_real_stones;
     std::list<std::pair<int, int>> list_coord_white_stones;
     std::list<std::pair<int, int>> list_coord_black_stones;
     int board_size;
@@ -38,7 +38,7 @@ public:
     MainMenu(Table& _table);
     void print_table(sf::RenderWindow& window); //печатаем стол+камни
     void print_menu(sf::RenderWindow& window); //печатаем главное меню
-    void add_stone(TableStone* stone);
+    void add_stone(std::shared_ptr<TableStone> stone);
     void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
     void if_delete_stones(bool&& color);
     bool check_neighbours(int& x, int& y, bool& color, bool& last_color);
@@ -51,6 +51,6 @@ public:
     bool VACANT(int&& x, int&& y);
     bool NOT_VACANT_ANY_LIST(int& x, int& y, std::list<std::pair<int, int>> _list);
     static void wait_connect(MainMenu* obj);
-    static void wait_stone(MainMenu* obj, TableStone* stone);
+    static void wait_stone(MainMenu* obj, std::shared_ptr<TableStone> stone);
     static void wait_first_stone(MainMenu* obj);
 };

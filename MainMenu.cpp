@@ -10,7 +10,7 @@ MainMenu::MainMenu(Table& _table) {
 				table = &_table;
 }
 
-void MainMenu::add_stone(TableStone* stone) {
+void MainMenu::add_stone(std::shared_ptr<TableStone> stone) {
 				if (VACANT(stone->stone_x_coords(table), stone->stone_y_coords(table))) {
 								if (stone->check_color()) {
 												list_real_stones.push_back(stone);
@@ -47,7 +47,7 @@ void MainMenu::add_stone(TableStone* stone) {
 								}
 				}
 }
-void MainMenu::wait_stone(MainMenu* obj, TableStone* stone) {
+void MainMenu::wait_stone(MainMenu* obj, std::shared_ptr<TableStone> stone) {
 				obj->waiting_answer_flag = true;
 				sf::Packet packet;
 				packet << stone->get_x() << stone->get_y();
@@ -62,7 +62,8 @@ void MainMenu::wait_stone(MainMenu* obj, TableStone* stone) {
 								int x;
 								int y;
 								packet >> x >> y;
-								TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
+								TableStone* stone__ = new TableStone(x, y, *obj->table, !obj->color);
+								std::shared_ptr<TableStone> _stone(stone__);
 								obj->list_real_stones.push_back(_stone);
 								if (obj->color) {
 												obj->list_coord_black_stones.push_back(_stone->stone_coords(obj->table));
@@ -415,7 +416,8 @@ void MainMenu::wait_first_stone(MainMenu* obj) {
 								int x;
 								int y;
 								packet >> x >> y;
-								TableStone* _stone = new TableStone(x, y, *obj->table, !obj->color);
+								TableStone* stone_ = new TableStone(x, y, *obj->table, !obj->color);
+								std::shared_ptr<TableStone> _stone(stone_);
 								obj->list_real_stones.push_back(_stone);
 								obj->list_coord_white_stones.push_back(_stone->stone_coords(obj->table));
 								obj->waiting_answer_flag = false;
@@ -438,7 +440,8 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 				TableStone _helperstone(sf::Mouse::getPosition(window), *table, this->color);
 				TableStone* helperstone = new TableStone();
 				TableStone _pushed_stone(sf::Mouse::getPosition(window), *table, this->color);
-				TableStone* pushed_stone = new TableStone();
+				TableStone* p_stone = new TableStone();
+				std::shared_ptr<TableStone> pushed_stone(p_stone);
 				if (!color) {
 								std::thread th(wait_first_stone, this);
 								th.detach();
@@ -458,7 +461,7 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 																				if (*pushed_stone == TableStone(sf::Mouse::getPosition(window), *table, color)) {
 																								dontpush_stone_flag = false;																				}
 																				else {
-																								pushed_stone = new TableStone(sf::Mouse::getPosition(window), *table, color);
+																								pushed_stone.reset(new TableStone(sf::Mouse::getPosition(window), *table, color));
 																								begin_flag = true;
 																								dontpush_stone_flag = true;
 																				}
@@ -758,7 +761,7 @@ void MainMenu::delete_stones(const std::pair<int, int>& eated, bool& color) {
 				std::pair<int, int> stone_coords;
 				stone_coords = return_stone_coordinate(eated, table_size);
 				list_real_stones.erase(std::find_if(list_real_stones.begin(), list_real_stones.end(),
-								[&stone_coords](TableStone* arg) {
+								[&stone_coords](std::shared_ptr<TableStone> arg) {
 												return	arg->stone_coords_pixels() == stone_coords;
 				}));
 				if (color) {

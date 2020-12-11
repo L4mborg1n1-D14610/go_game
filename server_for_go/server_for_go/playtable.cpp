@@ -7,6 +7,7 @@ playtable::playtable(sf::TcpSocket* _socket, std::string& _name, bool& _color, i
     color_2 = !_color;
     table_size = size;
     game_begin = false;
+    time(&begin_time);
 }
 void playtable::add_socket(std::shared_ptr<sf::TcpSocket>&& _socket) {
     selector.add(*_socket);
@@ -37,28 +38,68 @@ int playtable::get_tokens_size() {
 sf::SocketSelector playtable::get_selector() {
     return selector;
 }
-void playtable::send_data() {
+bool playtable::send_data() {
     if (selector.wait(sf::seconds(10.f))) {
-        std::cout << "deb1\n";
         sf::Packet packet;
         sf::Packet packet_client;
         int x;
         int y;
         if (selector.isReady(*players[0])) {
-            std::cout << "deb2\n";
             if (players[0]->receive(packet) == sf::Socket::Done) {
                 packet >> x >> y;
                 packet_client << true << x << y;
-                players[1]->send(packet_client);
+                if (players[1]->send(packet_client) == sf::Socket::Disconnected) {
+                    sf::Packet disconnect_packet;
+                    disconnect_packet << false;
+                    players[0]->send(disconnect_packet);
+                    players[0]->disconnect();
+                    std::cout << "player disconnected, game deleted\n";
+                    return false;
+                } else {
+                    std::cout << "sended for jointer\n";
+                    return true;
+                }
+            } else if (players[0]->receive(packet) == sf::Socket::Disconnected) {
+                sf::Packet disconnect_packet;
+                disconnect_packet << false;
+                players[1]->send(disconnect_packet);
+                players[1]->disconnect();
+                std::cout << "player disconnected, game deleted\n";
+                return false;
             }
         } else {
-            std::cout << "deb3\n";
             if (players[1]->receive(packet) == sf::Socket::Done) {
                 packet >> x >> y;
                 packet_client << true << x << y;
-                players[0]->send(packet_client);
+                if (players[0]->send(packet_client) == sf::Socket::Disconnected) {
+                    sf::Packet disconnect_packet;
+                    disconnect_packet << false;
+                    players[1]->send(disconnect_packet);
+                    players[1]->disconnect();
+                    std::cout << "player disconnected, game deleted\n";
+                    return false;
+                } else {
+                    std::cout << "sended for creator\n";
+                    return true;
+                }
+            } else if (players[1]->receive(packet) == sf::Socket::Disconnected) {
+                sf::Packet disconnect_packet;
+                disconnect_packet << false;
+                players[0]->send(disconnect_packet);
+                players[0]->disconnect();
+                std::cout << "player disconnected, game deleted\n";
+                return false;
             }
         }
+    }
+}
+bool playtable::check_time() {
+    time_t this_time;
+    time(&this_time);
+    if ((this_time - begin_time) > 600) {
+        return false;
+    } else {
+        return true;
     }
 }
 
