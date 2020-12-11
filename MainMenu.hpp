@@ -30,7 +30,7 @@ private:
     bool waiting_answer_flag; //for threads & block interface
     bool creator; //true - loby is created
     bool changed_score;
-    bool disconnect_flag; // false if player disconnected
+    bool disconnect_flag; // false if player disconnected   
     int white_score;
     int black_score;
 public:

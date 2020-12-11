@@ -78,6 +78,9 @@ void MainMenu::wait_stone(MainMenu* obj, TableStone* stone) {
 								obj->changed_score = true;
 								//		}
 								std::cout << "end of waiting\n";
+				}	else {
+								obj->waiting_answer_flag = false;
+								obj->disconnect_flag = false;
 				}
 }
 void MainMenu::print_menu(sf::RenderWindow& window) {
@@ -119,6 +122,7 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 				bool createflag = false; //флаг для изменения цвета кнопок
 				bool joinflag = false;
 				menu_table_flag = true;
+				socket.disconnect();
 				while (window.isOpen()) {
 								sf::Event event;
 								while (window.pollEvent(event)) {
@@ -381,9 +385,11 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 }
 void MainMenu::wait_connect(MainMenu* obj) {
 				obj->waiting_answer_flag = true;
+				std::cout << "before connecting\n";
 				obj->ip = "192.168.1.21";
 				sf::Packet packet;
 				obj->socket.connect(obj->ip, 5001);
+				std::cout << "after connecting\n";
 				packet << obj->host_flag << obj->loby_name << obj->color << obj->board_size;
 				obj->socket.send(packet);
 				packet.clear();
@@ -393,9 +399,12 @@ void MainMenu::wait_connect(MainMenu* obj) {
 								packet.clear();
 								obj->socket.receive(packet);
 								packet >> obj->creator;
+								obj->menu_table_flag = false;
+				} else {
+								obj->socket.disconnect();
+								obj->loby_name.clear();
 				}
 				obj->waiting_answer_flag = false;
-				obj->menu_table_flag = false;
 }
 void MainMenu::wait_first_stone(MainMenu* obj) {
 				obj->waiting_answer_flag = true;
@@ -504,12 +513,12 @@ void MainMenu::print_table(sf::RenderWindow& window) {
 												window.clear(sf::Color(210, 155, 52));
 								}
 								if (menu_table_flag) {
-												socket.disconnect();
 												list_real_stones.clear();
 												list_coord_black_stones.clear();
 												list_coord_black_stones.clear();
 												loby_name.clear();
 												creator = false;
+												waiting_answer_flag = false;
 												break;
 								}
 				}
