@@ -66,5 +66,5 @@ target_link_libraries(start_game PUBLIC Go)
 #  enable_project_coverage(tests)
 #  list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
 #  coverage_evaluate()
-# endif()
+# endif() 
 
