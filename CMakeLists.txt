@@ -37,7 +37,7 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 add_library(Go STATIC STATIC
     ${CMAKE_CURRENT_SOURCE_DIR}/packages
 )
-add_executable(start_game source.cpp
+add_executable(start_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
 target_include_directories(Go
