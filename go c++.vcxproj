@@ -74,6 +74,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Василий\source\repos\vasiliykadikov\go_game\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -138,24 +139,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="for_mainmenu.cpp" />
-    <ClCompile Include="MainMenu.cpp" />
-    <ClCompile Include="Source.cpp" />
-    <ClCompile Include="math_functions.cpp" />
-    <ClCompile Include="Table.cpp" />
-    <ClCompile Include="TableStone.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Button.hpp" />
-    <ClInclude Include="for_mainmenu.hpp" />
-    <ClInclude Include="MainMenu.hpp" />
-    <ClInclude Include="math_functions.hpp" />
-    <ClInclude Include="Table.hpp" />
-    <ClInclude Include="TableStone.hpp" />
+    <ClInclude Include="include\Button.hpp" />
+    <ClInclude Include="include\for_mainmenu.hpp" />
+    <ClInclude Include="include\MainMenu.hpp" />
+    <ClInclude Include="include\math_functions.hpp" />
+    <ClInclude Include="include\Table.hpp" />
+    <ClInclude Include="include\TableStone.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="sources\Button.cpp" />
+    <ClCompile Include="sources\for_mainmenu.cpp" />
+    <ClCompile Include="sources\MainMenu.cpp" />
+    <ClCompile Include="sources\math_functions.cpp" />
+    <ClCompile Include="sources\Source.cpp" />
+    <ClCompile Include="sources\Table.cpp" />
+    <ClCompile Include="sources\TableStone.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
