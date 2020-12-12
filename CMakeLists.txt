@@ -5,21 +5,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_COVERAGE "Build coverage" OFF)
 
-include("tools/gate/cmake/HunterGate.cmake")
+# include("tools/gate/cmake/HunterGate.cmake")
 
-HunterGate(
-  URL "https://github.com/ruslo/hunter/archive/v0.23.214.tar.gz"
-  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"
-)
+# HunterGate(
+#  URL "https://github.com/ruslo/hunter/archive/v0.23.214.tar.gz"
+#  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"
+# )
 
 project(Go_game)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
-hunter_add_package(GTest)
+# hunter_add_package(GTest)
 # hunter_add_package(SFML)
-find_package(GTest CONFIG REQUIRED)
+# find_package(GTest CONFIG REQUIRED)
 # find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 
 # add_library(Go_game STATIC \
@@ -34,7 +34,11 @@ find_package(GTest CONFIG REQUIRED)
 #    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/TableStone.hpp
 #           ${CMAKE_CURRENT_SOURCE_DIR}/sources/TableStone.cpp
 # )
-
+set_property(TARGET MyApplication
+    PROPERTY VS_PACKAGE_REFERENCES "sfml_graphics_2.5.1";
+"sfml_graphics.redist_2.5.1"; "sfml_system_2.5.1"; "sfml_system.redist_2.5.1";
+"sfml_window_2.5.1"; "sfml_window.redist_2.5.1"
+)
 add_executable(start_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
@@ -46,7 +50,7 @@ target_include_directories(start_game
 )
 
 # target_link_libraries(tests GTest::gtest_main Go_game)
-target_link_libraries(start_game PUBLIC sfml-graphics)
+# target_link_libraries(start_game PUBLIC sfml-graphics)
 target_link_libraries(start_game PUBLIC Go_game)
 
 # enable_testing()
