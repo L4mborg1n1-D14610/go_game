@@ -5,22 +5,22 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_COVERAGE "Build coverage" OFF)
 
-include("tools/gate/cmake/HunterGate.cmake")
+# include("tools/gate/cmake/HunterGate.cmake")
 
-HunterGate(
-  URL "https://github.com/ruslo/hunter/archive/v0.23.214.tar.gz"
-  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"
-)
+# HunterGate(
+#  URL "https://github.com/ruslo/hunter/archive/v0.23.214.tar.gz"
+#  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"
+# )
 
 project(Go)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
-hunter_add_package(GTest)
-hunter_add_package(SFML)
-find_package(GTest CONFIG REQUIRED)
-find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
+# hunter_add_package(GTest)
+# hunter_add_package(SFML)
+# find_package(GTest CONFIG REQUIRED)
+# find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 
 # add_library(Go STATIC \
 #    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Button.hpp
@@ -33,8 +33,10 @@ find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 #           ${CMAKE_CURRENT_SOURCE_DIR}/sources/Table.cpp \
 #    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/TableStone.hpp
 #           ${CMAKE_CURRENT_SOURCE_DIR}/sources/TableStone.cpp
-#    )
-
+# )
+add_library(Go STATIC STATIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages
+)
 add_executable(start_game source.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
@@ -43,26 +45,26 @@ target_include_directories(Go
 )
 
 # target_link_libraries(tests GTest::gtest_main Go)
-target_link_libraries(start_game PUBLIC sfml-graphics)
+# target_link_libraries(start_game PUBLIC sfml-graphics)
 target_link_libraries(start_game PUBLIC Go)
 
 # enable_testing()
 # add_test(NAME unit_tests COMMAND tests)
 
-if(BUILD_COVERAGE)
-  function(ENABLE_PROJECT_COVERAGE PROJECT)
-    target_compile_options(${PROJECT} PRIVATE --coverage)
-    target_link_libraries(${PROJECT} --coverage)
-    add_coverage(${PROJECT})
-  endfunction()
+# if(BUILD_COVERAGE)
+#  function(ENABLE_PROJECT_COVERAGE PROJECT)
+#    target_compile_options(${PROJECT} PRIVATE --coverage)
+#    target_link_libraries(${PROJECT} --coverage)
+#    add_coverage(${PROJECT})
+#  endfunction()
 
-  set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
-  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-  find_package(codecov)
+#  set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
+#  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+#  find_package(codecov)
 
-  enable_project_coverage(Go)
+#  enable_project_coverage(Go)
 #  enable_project_coverage(tests)
 #  list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
-  coverage_evaluate()
-endif()
+#  coverage_evaluate()
+# endif()
 
