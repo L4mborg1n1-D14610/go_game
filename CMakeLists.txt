@@ -5,17 +5,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_COVERAGE "Build coverage" OFF)
 
-set(
-  HUNTER_CACHE_SERVERS
-  "https://github.com/bmstu-iu8-cpp-sem-3/hunter-cache"
-  CACHE STRING "Default cache server"
-)
-
-
-HunterGate(
-  URL "https://github.com/cpp-pm/hunter/archive/v0.23.278.tar.gz"
-  SHA1 "35fa55bc1dfcf9f4d7264f8bb26cd1759ce1ae07"
-)
+include("cmake/HunterGate.cmake")
+HunterGate(URL "https://github.com/ruslo/hunter/archive/v0.23.165.tar.gz"
+           SHA1 "5a73f91df5f6109c0bb1104d0c0ee423f7bece79")
 
 project(Go)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
