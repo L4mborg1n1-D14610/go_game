@@ -5,10 +5,10 @@
 
 int main()
 {
-				int scrX = GetSystemMetrics(SM_CXSCREEN); //оптимальные параметры окна 
+				int scrX = GetSystemMetrics(SM_CXSCREEN); //Г®ГЇГІГЁГ¬Г Г«ГјГ­Г»ГҐ ГЇГ Г°Г Г¬ГҐГІГ°Г» Г®ГЄГ­Г  
 				int scrY = GetSystemMetrics(SM_CYSCREEN);
 				sf::RenderWindow window(sf::VideoMode(scrX, scrY), "Go", sf::Style::Close);
-				window.setVerticalSyncEnabled(true); //вертикальная синхронизация окна
+				window.setVerticalSyncEnabled(true); //ГўГҐГ°ГІГЁГЄГ Г«ГјГ­Г Гї Г±ГЁГ­ГµГ°Г®Г­ГЁГ§Г Г¶ГЁГї Г®ГЄГ­Г 
 				MainMenu menu(scrX, scrY);
 				menu.print_window(window);
 				return 0;
