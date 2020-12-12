@@ -34,9 +34,14 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 #    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/TableStone.hpp
 #           ${CMAKE_CURRENT_SOURCE_DIR}/sources/TableStone.cpp
 # )
-# add_library(Go_game STATIC
-#    ${CMAKE_CURRENT_SOURCE_DIR}/packages
-# )
+ add_library(Go_game STATIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/sfml_graphics.2.5.1 \
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/sfml_graphics.redist.2.5.1 \
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/sfml_system.2.5.1 \
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/sfml_system.redist.2.5.1 \
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/sfml_window.2.5.1 \
+    ${CMAKE_CURRENT_SOURCE_DIR}/packages/sfml_window.redist.2.5.1
+)
 add_executable(start_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
