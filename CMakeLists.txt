@@ -5,9 +5,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_COVERAGE "Build coverage" OFF)
 
-include("cmake/HunterGate.cmake")
-HunterGate(URL "https://github.com/ruslo/hunter/archive/v0.23.165.tar.gz"
-           SHA1 "5a73f91df5f6109c0bb1104d0c0ee423f7bece79")
+include("tools/gate/cmake/HunterGate.cmake")
+
+HunterGate(
+  URL "https://github.com/ruslo/hunter/archive/v0.23.214.tar.gz"
+  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"
+)
 
 project(Go)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
