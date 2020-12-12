@@ -12,7 +12,7 @@ option(BUILD_COVERAGE "Build coverage" OFF)
 #  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"
 # )
 
-project(Go)
+project(Go_game)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
@@ -22,7 +22,7 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 # find_package(GTest CONFIG REQUIRED)
 # find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 
-# add_library(Go STATIC \
+# add_library(Go_game STATIC \
 #    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Button.hpp
 #           ${CMAKE_CURRENT_SOURCE_DIR}/sources/Button.cpp \
 #    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/for_mainmenu.hpp
@@ -34,19 +34,19 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 #    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/TableStone.hpp
 #           ${CMAKE_CURRENT_SOURCE_DIR}/sources/TableStone.cpp
 # )
-add_library(Go STATIC STATIC
+add_library(Go_game STATIC STATIC
     ${CMAKE_CURRENT_SOURCE_DIR}/packages
 )
 add_executable(start_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
-target_include_directories(Go
+target_include_directories(Go_game
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# target_link_libraries(tests GTest::gtest_main Go)
+# target_link_libraries(tests GTest::gtest_main Go_game)
 # target_link_libraries(start_game PUBLIC sfml-graphics)
-target_link_libraries(start_game PUBLIC Go)
+target_link_libraries(start_game PUBLIC Go_game)
 
 # enable_testing()
 # add_test(NAME unit_tests COMMAND tests)
@@ -62,7 +62,7 @@ target_link_libraries(start_game PUBLIC Go)
 #  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 #  find_package(codecov)
 
-#  enable_project_coverage(Go)
+#  enable_project_coverage(Go_game)
 #  enable_project_coverage(tests)
 #  list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
 #  coverage_evaluate()
