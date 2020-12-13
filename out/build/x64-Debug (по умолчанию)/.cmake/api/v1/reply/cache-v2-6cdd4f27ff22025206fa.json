@@ -1302,6 +1302,18 @@
 			"value" : "SFML_DIR-NOTFOUND"
 		},
 		{
+			"name" : "SFML_INCLUDE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Path to a file."
+				}
+			],
+			"type" : "PATH",
+			"value" : "SFML_INCLUDE_DIR-NOTFOUND"
+		},
+		{
 			"name" : "sf_LIB_DEPENDS",
 			"properties" : 
 			[

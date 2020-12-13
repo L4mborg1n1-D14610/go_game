@@ -228,6 +228,9 @@ HUNTER_TLS_VERIFY:BOOL=ON
 //No help, variable specified on the command line.
 SFML_DIR:PATH=SFML_DIR-NOTFOUND
 
+//Path to a file.
+SFML_INCLUDE_DIR:PATH=SFML_INCLUDE_DIR-NOTFOUND
+
 //Dependencies for the target
 sf_LIB_DEPENDS:STATIC=general;sfml-graphics;general;sfml-window;general;sfml-system;general;sfml-network;general;Go_game;
 
