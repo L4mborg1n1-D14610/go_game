@@ -22,8 +22,8 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 # find_package(GTest CONFIG REQUIRED)
 # find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 
-find_package(SFML REQUIRED)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib)
+
+add_library(Go_game ${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib)
 
 add_executable(Go_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
