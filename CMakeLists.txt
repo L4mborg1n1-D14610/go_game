@@ -35,9 +35,9 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 #           ${CMAKE_CURRENT_SOURCE_DIR}/sources/TableStone.cpp
 # )
 set_property(TARGET packages
-    PROPERTY VS_PACKAGE_REFERENCES "sfml_graphics_2.5.1";
-"sfml_graphics.redist_2.5.1"; "sfml_system_2.5.1"; "sfml_system.redist_2.5.1";
-"sfml_window_2.5.1"; "sfml_window.redist_2.5.1"
+    PROPERTY VS_PACKAGE_REFERENCES "sfml_graphics_2.5.1"
+# "sfml_graphics.redist_2.5.1"; "sfml_system_2.5.1"; "sfml_system.redist_2.5.1";
+# "sfml_window_2.5.1"; "sfml_window.redist_2.5.1"
 )
 add_executable(Go_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
@@ -49,7 +49,7 @@ target_include_directories(Go_game
 
 # target_link_libraries(tests GTest::gtest_main Go_game)
 # target_link_libraries(start_game PUBLIC sfml-graphics)
-target_link_libraries(start_game PUBLIC Go_game)
+# target_link_libraries(start_game PUBLIC Go_game)
 
 # enable_testing()
 # add_test(NAME unit_tests COMMAND tests)
