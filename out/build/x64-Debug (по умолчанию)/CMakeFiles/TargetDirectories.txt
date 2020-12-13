@@ -1,3 +1,0 @@
-C:/Users/Василий/source/repos/vasiliykadikov/go_game/out/build/x64-Debug (по умолчанию)/CMakeFiles/start_game.dir
-C:/Users/Василий/source/repos/vasiliykadikov/go_game/out/build/x64-Debug (по умолчанию)/CMakeFiles/edit_cache.dir
-C:/Users/Василий/source/repos/vasiliykadikov/go_game/out/build/x64-Debug (по умолчанию)/CMakeFiles/rebuild_cache.dir

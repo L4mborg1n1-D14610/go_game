@@ -82,30 +82,27 @@ std::vector<int>::iterator Table::return_iter_y() {
 }
 bool Table::checkStoneCursor(sf::Vector2i _mouse) {
     int radius;
-    int size;
     switch ((*this).return_tablesize()) {
     case 1:
         radius = 34;
-        size = 9;
         break;
     case 2:
         radius = 25;
-        size = 13;
         break;
     case 3:
         radius = 18;
-        size = 19;
         break;
     default: break;
     }
-    if (std::get<0>(Checkcoordinate(_mouse, radius, size, *this)) && std::get<1>(Checkcoordinate(_mouse, radius, size, *this))) {
+    if (std::get<0>(Checkcoordinate(_mouse, radius, *this)) && std::get<1>(Checkcoordinate(_mouse, radius, *this))) {
         return true;
     }
     else {
         return false;
     }
+    return false;
 }
-std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table&& table) const {
+std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, Table&& table) const {
     for (auto it_x : table.doats_coordinate_x) {
         for (auto it_y : table.doats_coordinate_y) {
             if (_in_circle(_mouse.x, _mouse.y, radius, it_x, it_y)) {
@@ -115,7 +112,7 @@ std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, int 
     }
     return std::make_pair(0, 0);
 }
-std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, int size, Table& table) const {
+std::pair<int, int> Table::Checkcoordinate(sf::Vector2i _mouse, int radius, Table& table) const {
     for (auto it_x : table.doats_coordinate_x) {
         for (auto it_y : table.doats_coordinate_y) {
             if (_in_circle(_mouse.x, _mouse.y, radius, it_x, it_y)) {
