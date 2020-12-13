@@ -23,12 +23,19 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 # find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 
 
-add_library(go_game STATIC
+add_library(sf STATIC
   ${CMAKE_CURRENT_SOURCE_DIR}/SFML/lib
+)
+
+add_library(go_game STATIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 add_executable(start_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
+)
+target_include_directories(sf
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/SFML/include
 )
 target_include_directories(start_game
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
@@ -38,7 +45,8 @@ target_include_directories(Go_game
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_link_libraries (go_game PUBLIC sfml-graphics sfml-window sfml-system sfml-network)
+target_link_libraries (sf PUBLIC sfml-graphics sfml-window sfml-system sfml-network)
+target_link_libraries (sf PUBLIC Go_game)
 target_link_libraries (start_game PUBLIC Go_game)
 
 # target_link_libraries(tests GTest::gtest_main Go_game)
