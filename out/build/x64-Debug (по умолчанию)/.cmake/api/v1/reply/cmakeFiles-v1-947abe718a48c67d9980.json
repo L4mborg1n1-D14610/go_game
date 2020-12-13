@@ -1,0 +1,1496 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"path" : "tools/gate/cmake/HunterGate.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/Hunter"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_add_package.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_finalize.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_apply_copy_rules.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_config.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_pack_git_self.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_get_git_executable.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_pack_git_submodule.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_parse_cmake_args_for_keyword.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_lock_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_make_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_lock_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_print_cmd.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_calculate_self.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_lock_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_make_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_lock_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_print_cmd.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_print.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_check_flush_needed.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_flush_cache_variables.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_unsetvar.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_set_config_location.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_print.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_calculate_self.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_create_cache_file.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_sanity_checks.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_print.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_get_project_files_to_load.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_private_data.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_cache_server_password.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_check_download_error_message.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_get_passwords_path.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_http_password.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_init_not_found_counter.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_lock_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_private_data_password.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_sleep_before_download.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_step_into_unpacked_directory.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_upload_password.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_user_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_fatal_error.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeParseArguments.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_initialize.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_calculate_self.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_flush_cache_variables.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_unsetvar.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_status_debug.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_assert_not_empty_string.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_internal_error.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/.hunter/_Base/Download/Hunter/0.23.214/e14bc15/Unpacked/cmake/modules/hunter_error_page.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug (по умолчанию)/CMakeFiles/3.18.20081302-MSVC_2/CMakeSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug (по умолчанию)/CMakeFiles/3.18.20081302-MSVC_2/CMakeCCompiler.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug (по умолчанию)/CMakeFiles/3.18.20081302-MSVC_2/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Platform/Windows.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Platform/WindowsPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Compiler/MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Platform/Windows-MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "out/build/x64-Debug (по умолчанию)/CMakeFiles/3.18.20081302-MSVC_2/CMakeRCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeRCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Compiler/MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Platform/Windows-MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "C:/Users/Василий/source/repos/vasiliykadikov/go_game/out/build/x64-Debug (по умолчанию)",
+		"source" : "C:/Users/Василий/source/repos/vasiliykadikov/go_game"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

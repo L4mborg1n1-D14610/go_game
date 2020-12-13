@@ -5,25 +5,24 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(BUILD_COVERAGE "Build coverage" OFF)
 
-# include("tools/gate/cmake/HunterGate.cmake")
+include("tools/gate/cmake/HunterGate.cmake")
 
-# HunterGate(
-#  URL "https://github.com/ruslo/hunter/archive/v0.23.214.tar.gz"
-#  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"
-# )
+
+HunterGate(
+  URL "https://github.com/ruslo/hunter/archive/v0.23.214.tar.gz"    # URL к ядру Hunter
+  SHA1 "e14bc153a7f16d6a5eeec845fb0283c8fad8c358"                   # SHA1 хэш
+)
 
 project(Go_game)
 string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
-# hunter_add_package(GTest)
-# hunter_add_package(SFML)
-# find_package(GTest CONFIG REQUIRED)
-find_package(SFML 2 COMPONENTS window graphics system network)
-
-#add_library(sf STATIC
-#  ${CMAKE_CURRENT_SOURCE_DIR}/SFML/bin
+ # hunter_add_package(GTest)
+ # find_package(GTest CONFIG REQUIRED)
+hunter_add_package(SFML)
+find_package(SFML COMPONENTS system window graphics network CONFIG REQUIRED)
+# ${CMAKE_CURRENT_SOURCE_DIR}/SFML/bin
 #)
 
 #add_library(go_game STATIC
