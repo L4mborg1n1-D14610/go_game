@@ -22,23 +22,9 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 # find_package(GTest CONFIG REQUIRED)
 # find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 
-# add_library(Go_game STATIC \
-#    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Button.hpp
-#           ${CMAKE_CURRENT_SOURCE_DIR}/sources/Button.cpp \
-#    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/for_mainmenu.hpp
-#           ${CMAKE_CURRENT_SOURCE_DIR}/sources/for_mainmenu.cpp \
-#    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/math_functions.hpp
-#           ${CMAKE_CURRENT_SOURCE_DIR}/sources/math_functions.cpp \
-#    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/Table.hpp
-#           ${CMAKE_CURRENT_SOURCE_DIR}/sources/Table.cpp \
-#    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/TableStone.hpp
-#           ${CMAKE_CURRENT_SOURCE_DIR}/sources/TableStone.cpp
-# )
-set_property(TARGET packages
-    PROPERTY VS_PACKAGE_REFERENCES "sfml_graphics_2.5.1"
-# "sfml_graphics.redist_2.5.1"; "sfml_system_2.5.1"; "sfml_system.redist_2.5.1";
-# "sfml_window_2.5.1"; "sfml_window.redist_2.5.1"
-)
+find_package (SFML REQUIRED system window graphics network audio)
+include_directories(${SFML_INCLUDE_DIR})
+
 add_executable(Go_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
@@ -46,7 +32,7 @@ target_include_directories(Go_game
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-
+target_link_libraries(space_impact ${SFML_LIBRARIES})
 # target_link_libraries(tests GTest::gtest_main Go_game)
 # target_link_libraries(start_game PUBLIC sfml-graphics)
 # target_link_libraries(start_game PUBLIC Go_game)
