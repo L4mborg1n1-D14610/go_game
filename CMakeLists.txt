@@ -34,7 +34,7 @@ target_include_directories(Go_game
 )
 
 target_link_libraries (Go_game PUBLIC sfml-graphics sfml-window sfml-system sfml-network)
-target_link)libraries (start_game PUBLIC Go_game)
+target_link_libraries (start_game PUBLIC Go_game)
 
 # target_link_libraries(tests GTest::gtest_main Go_game)
 # target_link_libraries(start_game PUBLIC sfml-graphics)
