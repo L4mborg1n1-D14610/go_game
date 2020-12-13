@@ -30,7 +30,12 @@ add_library(sf STATIC
 add_executable(start_game
   ${CMAKE_CURRENT_SOURCE_DIR}/sources/source.cpp
 )
-
+target_include_directories(start_game
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_include_directories(sf
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 target_include_directories(Go_game
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
