@@ -22,7 +22,7 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 # find_package(GTest CONFIG REQUIRED)
 # find_package(SFML COMPONENTS graphics CONFIG REQUIRED)
 
-find_package (SFML REQUIRED system window graphics network audio)
+find_package(SFML REQUIRED)
 include_directories(${SFML_INCLUDE_DIR})
 
 add_executable(Go_game
@@ -32,7 +32,7 @@ target_include_directories(Go_game
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_link_libraries(space_impact ${SFML_LIBRARIES})
+target_link_libraries (Go_game sfml-graphics sfml-window sfml-system sfml-network)
 # target_link_libraries(tests GTest::gtest_main Go_game)
 # target_link_libraries(start_game PUBLIC sfml-graphics)
 # target_link_libraries(start_game PUBLIC Go_game)
