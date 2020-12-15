@@ -85,7 +85,7 @@
 ## Структура сервера
     • Класс непосредственно сервера (server_for_go)
     • Класс игрового лобби (playtable)
-Сервер реализован посредством библиотеки SFML/Network
+Сервер реализован посредством библиотеки [**SFML/Network**](https://www.sfml-dev.org/documentation/2.5.1/group__network.php)
 Схематический принцип работы сервера:
 
 ![alt text](https://github.com/vasiliykadikov/go_game/blob/main/Images_for_md/6.png?raw=true)
