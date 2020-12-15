@@ -15,6 +15,8 @@ private:
     sf::CircleShape stone; //окружность камня
     bool stone_color; //true - white, false - black
     int size; //длина доски
+protected:
+
 public:
     TableStone();
     explicit TableStone(TableStone& stone);
