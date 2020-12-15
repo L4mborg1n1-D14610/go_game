@@ -1,8 +1,8 @@
 # Сетевая игра Go с графическим интерфейсом
 
-сборка для [**рeпозитория**](https://github.com/vasiliykadikov/go_checks)
+сборка для [**ветви**](https://github.com/vasiliykadikov/go_game/tree/Go_forCI)
 
-[![Build Status](https://travis-ci.com/vasiliykadikov/go_checks.svg?branch=master)](https://travis-ci.com/vasiliykadikov/go_checks)
+[![Build Status](https://travis-ci.com/vasiliykadikov/go_game.svg?branch=Go_forCI)](https://travis-ci.com/vasiliykadikov/go_game)
 
 Отличия из-за того, что сборка для **linux**
 
