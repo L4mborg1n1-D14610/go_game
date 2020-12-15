@@ -52,11 +52,9 @@ void MainMenu::wait_stone(MainMenu* obj, std::shared_ptr<TableStone> stone) {
 				sf::Packet packet;
 				packet << stone->get_x() << stone->get_y();
 				obj->socket.send(packet);
-				std::cout << "packet sended\n";
 				packet.clear();
 			//	if (obj->socket.receive(packet) == sf::Socket::Done) {
 				obj->socket.receive(packet);
-				std::cout << "packet get\n";
 				packet >> obj->disconnect_flag;
 				if (obj->disconnect_flag) {
 								int x;
@@ -78,7 +76,6 @@ void MainMenu::wait_stone(MainMenu* obj, std::shared_ptr<TableStone> stone) {
 								obj->waiting_answer_flag = false;
 								obj->changed_score = true;
 								//		}
-								std::cout << "end of waiting\n";
 				}	else {
 								obj->waiting_answer_flag = false;
 								obj->disconnect_flag = false;
@@ -284,7 +281,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																												creator = false;
 																												std::thread th(wait_connect, this);
 																												th.detach();
-																												std::cout << "jointed";
 																								}
 																				}
 																				colorflags[11] = true;
@@ -344,7 +340,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																												socket.receive(packet);
 																												packet >> creator;
 																												if (creator) {
-																																std::cout << "connected!";
 																																packet >> color >> board_size;
 																																menu_table_flag = false;
 																																break;
@@ -386,11 +381,9 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 }
 void MainMenu::wait_connect(MainMenu* obj) {
 				obj->waiting_answer_flag = true;
-				std::cout << "before connecting\n";
 				obj->ip = "192.168.1.21";
 				sf::Packet packet;
 				obj->socket.connect(obj->ip, 5001);
-				std::cout << "after connecting\n";
 				packet << obj->host_flag << obj->loby_name << obj->color << obj->board_size;
 				obj->socket.send(packet);
 				packet.clear();

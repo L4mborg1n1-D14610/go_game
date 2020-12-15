@@ -6,7 +6,6 @@
 #include<iterator>
 #include <list>
 #include <utility>
-#include <iostream>
 #include <memory>
 #include <thread>
 #include "Button.hpp"
