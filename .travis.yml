@@ -10,7 +10,7 @@ apt:
   - cmake
   - cmake-data
 before_install:
- - X11Forwarding yes
+ - export DISPLAY="127.0.0.1:10.0"
  - pip install --user cpp-coveralls
  - sudo apt-get install libsfml-dev
 script: 
