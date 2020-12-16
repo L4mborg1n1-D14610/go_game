@@ -1,6 +1,9 @@
 os: linux
 sudo: required
 language: cpp
+env:
+  global:
+    - RUN_TESTS=true
 
 compiler:
   - gcc
@@ -11,7 +14,7 @@ script:
      - sudo apt-get install libsfml-dev
      - cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON .. 
      - make
-     - make Go_game_coverage
+   #  - make Go_game_coverage
      - ctest
 notifications:
     email: false 
