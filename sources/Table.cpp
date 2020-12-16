@@ -10,21 +10,21 @@ Table::Table(int& _tablesize) {
     tablesize = _tablesize;
     switch (tablesize) {
     case 1: 
-      //  tableimage.loadFromFile("Images/smalltable.png");
+        tableimage.loadFromFile("Images/smalltable.png");
         for (auto i = 0; i < 9; ++i) {
             doats_coordinate_x.push_back(round(115 + 77.625 * i));
             doats_coordinate_y.push_back(round(114 + 77.625 * i));
         }
         break;
     case 2: 
-      //  tableimage.loadFromFile("Images/mediumtable.png");
+        tableimage.loadFromFile("Images/mediumtable.png");
         for (auto i = 0; i < 13; ++i) {
             doats_coordinate_x.push_back(round(83 + 56.33 * i));
             doats_coordinate_y.push_back(round(82 + 56.33 * i));
         }
         break;
     case 3: 
-      //  tableimage.loadFromFile("Images/bigtable.png");
+        tableimage.loadFromFile("Images/bigtable.png");
         for (auto i = 0; i < 19; ++i) {
             doats_coordinate_x.push_back(59 + 40 * i);
             doats_coordinate_y.push_back(60 + 40 * i);
@@ -41,21 +41,21 @@ Table::Table(int&& _tablesize) {
     tablesize = _tablesize;
     switch (tablesize) {
     case 1:
-      //  tableimage.loadFromFile("Images/smalltable.png");
+        tableimage.loadFromFile("Images/smalltable.png");
         for (auto i = 0; i < 9; ++i) {
             doats_coordinate_x.push_back(round(115 + 77.625 * i));
             doats_coordinate_y.push_back(round(114 + 77.625 * i));
         }
         break;
     case 2:
-       // tableimage.loadFromFile("Images/mediumtable.png");
+        tableimage.loadFromFile("Images/mediumtable.png");
         for (auto i = 0; i < 13; ++i) {
             doats_coordinate_x.push_back(round(83 + 56.33 * i));
             doats_coordinate_y.push_back(round(82 + 56.33 * i));
         }
         break;
     case 3:
-      //  tableimage.loadFromFile("Images/bigtable.png");
+        tableimage.loadFromFile("Images/bigtable.png");
         for (auto i = 0; i < 19; ++i) {
             doats_coordinate_x.push_back(59 + 40 * i);
             doats_coordinate_y.push_back(60 + 40 * i);
