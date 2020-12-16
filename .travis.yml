@@ -5,19 +5,13 @@ language: cpp
 compiler:
   - gcc
 
-before_script:
-  - mkdir build
-  - cd build
-  - sudo apt-get install libsfml-dev
-  - cmake ..
-
-jobs:
-  include:
-    - name: "make"
-      script: 
-        - make
-    - name: "tests"
-      script:
-        - docker run -v `pwd`:`pwd` -w `pwd` -t rusdevops/bootstrap-cpp scripts/tests.sh
+script: 
+     - mkdir -p build
+     - cd build
+     - sudo apt-get install libsfml-dev
+     - cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON .. 
+     - make
+     - make project1_coverage
+     - ctest
 notifications:
-    email: false
+    email: false 
