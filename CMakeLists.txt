@@ -44,13 +44,12 @@ target_include_directories(tests
 target_include_directories(start_game
   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-# target_include_directories(Go_game
-#   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/SFML-include
-# )
-# target_include_directories(start_game
-#   PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/SFML-include
-# )
-target_link_libraries(tests GTest::gtest_main sfml-network
+target_link_libraries(Go_game    sfml-network
+                                 sfml-graphics
+                                 sfml-window
+                                 sfml-system)
+target_link_libraries(tests GTest::gtest_main Go_game
+                                 sfml-network
                                  sfml-graphics
                                  sfml-window
                                  sfml-system)
