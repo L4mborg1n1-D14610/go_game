@@ -14,7 +14,7 @@ script:
      - sudo apt-get install libsfml-dev
      - cmake ${CMAKE_OPTIONS} -DCMAKE_CXX_FLAGS=${CXX_FLAGS} -DCMAKE_BUILD_TYPE=Coverage -DBUILD_TESTS=ON .. 
      - make
-   #  - make Go_game_coverage
-     - ctest
+     - make Go_game_coverage
+     - ./check --enable-gcov 
 notifications:
     email: false 
