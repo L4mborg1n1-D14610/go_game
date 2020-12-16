@@ -35,14 +35,9 @@ private:
     bool disconnect_flag; // false if player disconnected   
     int white_score;
     int black_score;
-public:
-    MainMenu(int& _scrX, int& _scrY);
-    MainMenu(Table& _table);
     void print_table(sf::RenderWindow& window); //печатаем стол+камни
     void print_menu(sf::RenderWindow& window); //печатаем главное меню
     void add_stone(std::shared_ptr<TableStone> stone);
-    void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
-    void if_delete_stones(bool&& color_);
     bool check_neighbours(int& x, int& y, bool& color_, bool& last_color);
     bool check_neighbours(int& x, int& y, std::list<std::pair<int, int>>& eat, std::list<std::pair<int, int>>& eated, bool& color_);
     void delete_stones(const std::pair<int, int>& eated, bool& color_);
@@ -55,5 +50,10 @@ public:
     static void wait_connect(MainMenu* obj);
     static void wait_stone(MainMenu* obj, std::shared_ptr<TableStone> stone);
     static void wait_first_stone(MainMenu* obj);
+    void if_delete_stones(bool&& color_);
+public:
+    MainMenu(int& _scrX, int& _scrY);
+    MainMenu(Table& _table);
+    void print_window(sf::RenderWindow& window); //печатаем либо стол, либо меню
 };
 #endif // INCLUDE_MAINMENU_HPP_
