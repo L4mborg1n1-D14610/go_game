@@ -2,6 +2,9 @@
 #include <MainMenu.hpp>
 
 TEST(Button_tests, add_letter) {
+  int scrX = 1600;
+  int scrY = 900;
+  sf::RenderWindow window(sf::VideoMode(scrX, scrY), "Go", sf::Style::Close);
   Button b(2, 2, "text", 10);
   b.add_letter('a');
   EXPECT_EQ(b.get_text(), "texta");
