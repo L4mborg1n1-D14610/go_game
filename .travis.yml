@@ -3,14 +3,14 @@ sudo: required
 language: cpp
 compiler:
 - gcc
-
+services:
+  - xvfb
 addons:
 apt:
  packages:
   - cmake
   - cmake-data
 before_install:
- - export DISPLAY="127.0.0.1:10.0"
  - pip install --user cpp-coveralls
  - sudo apt-get install libsfml-dev
 script: 
