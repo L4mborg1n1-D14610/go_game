@@ -2,17 +2,18 @@
 #include <MainMenu.hpp>
 
 TEST(Button_tests, add_letter) {
-  int scrX = 1600;
-  int scrY = 900;
-  sf::RenderWindow window(sf::VideoMode(scrX, scrY), "Go", sf::Style::Close);
-  Button b(2, 2, "text", 10);
+  int score = 2;
+  Button b(2, 2, score, 10);
   b.add_letter('a');
-  EXPECT_EQ(b.get_text(), "texta");
+  EXPECT_EQ(b.get_text(), "2a");
 }
 TEST(Button_tests, delete_letter) {
-    Button b(2, 2, "text", 10);
+    int score = 2;
+    Button b(2, 2, score, 10);
+    b.add_letter('a');
+    EXPECT_EQ(b.get_text(), "2a");
     b.delete_letter();
-    EXPECT_EQ(b.get_text(), "tex");
+    EXPECT_EQ(b.get_text(), "2");
 }
 TEST(Button_tests, empty_text) {
     Button b(2, 2, "text", 10);
