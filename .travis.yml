@@ -11,6 +11,13 @@ before_script:
   - sudo apt-get install libsfml-dev
   - cmake ..
 
-script: make
+jobs:
+  include:
+    - name: "make"
+      script: 
+        - make
+    - name: "tests"
+      script:
+        - docker run -v `pwd`:`pwd` -w `pwd` -t rusdevops/bootstrap-cpp scripts/tests.sh
 notifications:
     email: false
