@@ -4,7 +4,7 @@ Button::Button(double&& _x_t, double&& _y_t, std::string&& _text, int&& _text_si
     y_t = _y_t;
     
     text_size = _text_size;
-   // font.loadFromFile("fonts/RodchenkoBTT.ttf"); //загружаем шрифт
+    font.loadFromFile("fonts/RodchenkoBTT.ttf"); //загружаем шрифт
     text.setString(_text);						// загружает текст
     text.setFont(font);							// устанавливаем шрифт
     text.setCharacterSize(_text_size); 					// устанавливаем размер текста
@@ -25,7 +25,7 @@ Button::Button(double&& _x_t, double&& _y_t, int&& _text_size) {
     x_t = _x_t;
     y_t = _y_t;
 
-   // font.loadFromFile("fonts/RodchenkoBTT.ttf"); //загружаем шрифт
+    font.loadFromFile("fonts/RodchenkoBTT.ttf"); //загружаем шрифт
     text.setString("");
     text.setFont(font);							// устанавливаем шрифт
     text.setCharacterSize(_text_size); 					// устанавливаем размер текста
@@ -46,7 +46,7 @@ Button::Button(double&& _x_t, double&& _y_t, int& score, int&& _text_size) {
     x_t = _x_t;
     y_t = _y_t;
 
-   // font.loadFromFile("fonts/RodchenkoBTT.ttf"); //загружаем шрифт
+    font.loadFromFile("fonts/RodchenkoBTT.ttf"); //загружаем шрифт
     str_text = std::to_string(score);
     text.setString(str_text);
     text.setFont(font);							// устанавливаем шрифт
