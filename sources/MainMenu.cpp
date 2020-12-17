@@ -543,7 +543,7 @@ void MainMenu::print_window(sf::RenderWindow& window) {
 				}
 }
 void MainMenu::if_delete_stones(bool&& color_) {
-				bool color_;
+				bool _color;
 				if (_color) {
 								_color = false;
 								for (std::list < std::pair<int, int>>::iterator it = list_coord_black_stones.begin();
@@ -840,7 +840,7 @@ bool MainMenu::NOT_VACANT(int& x, int& y, bool& color_) {
 				}
 }
 bool MainMenu::NOT_VACANT(int& x, int& y, bool&& color_) {
-				if (color_ {
+				if (color_) {
 								if (std::find(list_coord_white_stones.begin(), list_coord_white_stones.end(), std::make_pair(x, y))
 												== list_coord_white_stones.end()) {
 												return false;
