@@ -984,7 +984,7 @@ bool MainMenu::check_neighbours(int& _x, int& _y, std::list<std::pair<int, int>>
 												}
 												++y;
 												--x;
-												if (check_eat_stone(x, y, color-, eat, eated)) {
+												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
 												--x;
