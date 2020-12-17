@@ -45,7 +45,14 @@ bool playtable::send_data() {
         int x;
         int y;
         if (selector.isReady(*players[0])) {
-            if (players[0]->receive(packet) == sf::Socket::Done) {
+            if (players[0]->receive(packet) == sf::Socket::Disconnected) {
+                sf::Packet disconnect_packet;
+                disconnect_packet << false;
+                players[1]->send(disconnect_packet);
+                players[1]->disconnect();
+                std::cout << "player disconnected, game deleted\n";
+                return false;
+            } else {
                 packet >> x >> y;
                 packet_client << true << x << y;
                 if (players[1]->send(packet_client) == sf::Socket::Disconnected) {
@@ -55,20 +62,23 @@ bool playtable::send_data() {
                     players[0]->disconnect();
                     std::cout << "player disconnected, game deleted\n";
                     return false;
-                } else {
+                }
+                else {
                     std::cout << "sended for jointer\n";
                     return true;
                 }
-            } else if (players[0]->receive(packet) == sf::Socket::Disconnected) {
+            }
+        }
+        else if (selector.isReady(*players[1])) {
+            std::cout << "else not sended for creator\n";
+            if (players[1]->receive(packet) == sf::Socket::Disconnected) {
                 sf::Packet disconnect_packet;
                 disconnect_packet << false;
                 players[1]->send(disconnect_packet);
                 players[1]->disconnect();
                 std::cout << "player disconnected, game deleted\n";
                 return false;
-            }
-        } else {
-            if (players[1]->receive(packet) == sf::Socket::Done) {
+            } else {
                 packet >> x >> y;
                 packet_client << true << x << y;
                 if (players[0]->send(packet_client) == sf::Socket::Disconnected) {
@@ -78,19 +88,66 @@ bool playtable::send_data() {
                     players[1]->disconnect();
                     std::cout << "player disconnected, game deleted\n";
                     return false;
-                } else {
-                    std::cout << "sended for creator\n";
+                }  else {
+                    std::cout << "sended for creator";
                     return true;
                 }
-            } else if (players[1]->receive(packet) == sf::Socket::Disconnected) {
-                sf::Packet disconnect_packet;
-                disconnect_packet << false;
-                players[0]->send(disconnect_packet);
-                players[0]->disconnect();
-                std::cout << "player disconnected, game deleted\n";
-                return false;
             }
         }
+       // if (selector.isReady(*players[0])) {
+       //     std::cout << "else not sended for jointer\n";
+       //     if (players[0]->receive(packet) == sf::Socket::Done) {
+       //         packet >> x >> y;
+       //         packet_client << true << x << y;
+       //         if (players[1]->send(packet_client) == sf::Socket::Disconnected) {
+       //             sf::Packet disconnect_packet;
+       //             disconnect_packet << false;
+       //             players[0]->send(disconnect_packet);
+       //             players[0]->disconnect();
+       //             std::cout << "player disconnected, game deleted\n";
+       //             return false;
+       //         }
+       //         else {
+       //             std::cout << "sended for jointer\n";
+       //             return true;
+       //         }
+       //     }
+       //     else if (players[0]->receive(packet) == sf::Socket::Disconnected) {
+       //         sf::Packet disconnect_packet;
+       //         disconnect_packet << false;
+       //         players[1]->send(disconnect_packet);
+       //         players[1]->disconnect();
+       //         std::cout << "player disconnected, game deleted\n";
+       //         return false;
+       //     }
+       // }
+       // else if (selector.isReady(*players[1])) {
+       //     std::cout << "else not sended for creator\n";
+       //     if (players[1]->receive(packet) == sf::Socket::Done) {
+       //         packet >> x >> y;
+       //         packet_client << true << x << y;
+       //         if (players[0]->send(packet_client) == sf::Socket::Disconnected) {
+       //             sf::Packet disconnect_packet;
+       //             disconnect_packet << false;
+       //             players[1]->send(disconnect_packet);
+       //             players[1]->disconnect();
+       //             std::cout << "player disconnected, game deleted\n";
+       //             return false;
+       //         }
+       //         else {
+       //             std::cout << "sended for creator\n";
+       //             return true;
+       //         }
+       //     }
+       //     else if (players[1]->receive(packet) == sf::Socket::Disconnected) {
+       //         sf::Packet disconnect_packet;
+       //         disconnect_packet << false;
+       //         players[0]->send(disconnect_packet);
+       //         players[0]->disconnect();
+       //         std::cout << "player disconnected, game deleted\n";
+       //         return false;
+       //     }
+       // }
     }
 }
 bool playtable::check_time() {

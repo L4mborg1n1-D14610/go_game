@@ -22,7 +22,6 @@ void server_go::wait_new(server_go* obj) {
       //      if (obj->selector.isReady(obj->listener)) {
         sf::TcpSocket* socket = new sf::TcpSocket;
         if (obj->listener.accept(*socket) == sf::Socket::Done) {
-                std::shared_ptr<sf::TcpSocket> sh_sock;
                 //obj->listener.accept(*socket);
                 sf::Packet packet;
                 if (socket->receive(packet) == sf::Socket::Done) {
@@ -57,7 +56,6 @@ void server_go::wait_new(server_go* obj) {
                         auto it = std::find_if(obj->lobbys.begin(), obj->lobbys.end(), [&](const std::shared_ptr<playtable>& pt) {
                             return pt->return_lob_name() == loby_name;
                             });
-                        std::cout << loby_name << std::endl;
                         if (it != obj->lobbys.end() && !(*it)->get_game_status()) {
                             std::cout << "connected to lobby with name: " << loby_name << std::endl;
                             //connect to lobby
@@ -110,8 +108,8 @@ void server_go::clients_handler(server_go* obj) {
                         obj->clients.erase(it_1);
                         obj->clients.erase(it_2);
                         obj->games.erase(it);
-                        std::cout << "disconnected";
-                        obj->listener.listen(5001);
+                        std::cout << "disconnected\n";
+                    //    obj->listener.listen(5001);
                         break;
                     }
                 }
