@@ -544,7 +544,7 @@ void MainMenu::print_window(sf::RenderWindow& window) {
 }
 void MainMenu::if_delete_stones(bool&& color_) {
 				bool _color;
-				if (_color) {
+				if (color_) {
 								_color = false;
 								for (std::list < std::pair<int, int>>::iterator it = list_coord_black_stones.begin();
 												it != list_coord_black_stones.end(); ++it) {
