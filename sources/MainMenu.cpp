@@ -626,8 +626,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else if (x == 0 && y == tablesize) {
+								}	else if (x == 0 && y == tablesize) {
 												eated.push_back(std::make_pair(x, y));
 												++x;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
@@ -638,8 +637,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else if (x == tablesize && y == 0) {
+								}	else if (x == tablesize && y == 0) {
 												eated.push_back(std::make_pair(x, y));
 												--x;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
@@ -650,8 +648,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else if (x == tablesize && y == tablesize) {
+								} else if (x == tablesize && y == tablesize) {
 												eated.push_back(std::make_pair(x, y));
 												--x;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
@@ -662,8 +659,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else if (x == 0) {
+								}	else if (x == 0) {
 												eated.push_back(std::make_pair(x, y));
 												++y;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
@@ -679,8 +675,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else if (x == tablesize) {
+								}	else if (x == tablesize) {
 												eated.push_back(std::make_pair(x, y));
 												++y;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
@@ -696,8 +691,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else if (y == 0) {
+								}	else if (y == 0) {
 												eated.push_back(std::make_pair(x, y));
 												++x;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
@@ -713,8 +707,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else if (y == tablesize) {
+								}	else if (y == tablesize) {
 												eated.push_back(std::make_pair(x, y));
 												++x;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
@@ -730,8 +723,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 												if (check_eat_stone(x, y, color_, eat, eated)) {
 																return false;
 												}
-								}
-								else {
+								}	else {
 												eated.push_back(std::make_pair(x, y));
 												++x;
 												if (check_eat_stone(x, y, color_, eat, eated)) {
