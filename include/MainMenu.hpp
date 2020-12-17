@@ -8,6 +8,7 @@
 #include <utility>
 #include <memory>
 #include <thread>
+#include <iostream>
 #include "Button.hpp"
 #include "TableStone.hpp"
 #include "for_mainmenu.hpp"
@@ -33,8 +34,11 @@ private:
     bool creator; //true - loby is created
     bool changed_score;
     bool disconnect_flag; // false if player disconnected   
+    bool dont_eat_flag; // true if need erase last stone
     int white_score;
     int black_score;
+    std::pair<int, int> last_eated_stone;
+    std::pair<int, int> last_pushed_stone;
     void print_table(sf::RenderWindow& window); //печатаем стол+камни
     void print_menu(sf::RenderWindow& window); //печатаем главное меню
     void add_stone(std::shared_ptr<TableStone> stone);
