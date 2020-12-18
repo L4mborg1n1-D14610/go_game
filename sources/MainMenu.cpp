@@ -50,11 +50,9 @@ void MainMenu::wait_stone(MainMenu* obj, std::shared_ptr<TableStone> stone) {
 				sf::Packet packet;
 				packet << stone->get_x() << stone->get_y();
 				obj->socket.send(packet);
-				std::cout << "packet sended\n";
 				packet.clear();
 				//	if (obj->socket.receive(packet) == sf::Socket::Done) {
 				obj->socket.receive(packet);
-				std::cout << "packet get\n";
 				packet >> obj->disconnect_flag;
 				if (obj->disconnect_flag) {
 								int x;
@@ -75,8 +73,6 @@ void MainMenu::wait_stone(MainMenu* obj, std::shared_ptr<TableStone> stone) {
 								}
 								obj->waiting_answer_flag = false;
 								obj->changed_score = true;
-								//		}
-								std::cout << "end of waiting\n";
 				}
 				else {
 								obj->waiting_answer_flag = false;
@@ -284,7 +280,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																												creator = false;
 																												std::thread th(wait_connect, this);
 																												th.detach();
-																												std::cout << "jointed";
 																								}
 																				}
 																				colorflags[11] = true;
@@ -344,7 +339,6 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 																												socket.receive(packet);
 																												packet >> creator;
 																												if (creator) {
-																																std::cout << "connected!";
 																																packet >> color >> board_size;
 																																menu_table_flag = false;
 																																break;
@@ -387,11 +381,8 @@ void MainMenu::print_menu(sf::RenderWindow& window) {
 }
 void MainMenu::wait_connect(MainMenu* obj) {
 				obj->waiting_answer_flag = true;
-				std::cout << "before connecting\n";
-				obj->ip = "192.168.1.21";
 				sf::Packet packet;
 				obj->socket.connect(obj->ip, 5001);
-				std::cout << "after connecting\n";
 				packet << obj->host_flag << obj->loby_name << obj->color << obj->board_size;
 				obj->socket.send(packet);
 				packet.clear();
@@ -748,11 +739,7 @@ bool MainMenu::check_neighbours(int& x, int& y, bool& color_, bool& last_color) 
 								eated.sort();
 								eated.erase(std::unique(eated.begin(), eated.end()), eated.end());
 								if (color_ != last_color) {
-												std::cout << "eated size: " << eated.size()
-																<< "coords last: " << last_eated_stone.first << last_eated_stone.second
-																<< "vec.begin: " << eated.begin()->first << eated.begin()->second << std::endl;
 												if (eated.size() == 1 && last_eated_stone == last_pushed_stone) {
-																std::cout << "no\n";
 																dont_eat_flag = true;
 																return false;
 												}	else {

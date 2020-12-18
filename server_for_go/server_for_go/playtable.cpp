@@ -51,7 +51,7 @@ bool playtable::send_data() {
                 players[1]->send(disconnect_packet);
                 players[1]->disconnect();
                 std::cout << "player disconnected, game deleted\n";
-                return false;
+                return true;
             } else {
                 packet >> x >> y;
                 packet_client << true << x << y;
@@ -61,23 +61,20 @@ bool playtable::send_data() {
                     players[0]->send(disconnect_packet);
                     players[0]->disconnect();
                     std::cout << "player disconnected, game deleted\n";
+                    return true;
+                } else {
+                    std::cout << "sended for jointer\n";
                     return false;
                 }
-                else {
-                    std::cout << "sended for jointer\n";
-                    return true;
-                }
             }
-        }
-        else if (selector.isReady(*players[1])) {
-            std::cout << "else not sended for creator\n";
+        } else if (selector.isReady(*players[1])) {
             if (players[1]->receive(packet) == sf::Socket::Disconnected) {
                 sf::Packet disconnect_packet;
                 disconnect_packet << false;
                 players[1]->send(disconnect_packet);
                 players[1]->disconnect();
                 std::cout << "player disconnected, game deleted\n";
-                return false;
+                return true;
             } else {
                 packet >> x >> y;
                 packet_client << true << x << y;
@@ -87,10 +84,10 @@ bool playtable::send_data() {
                     players[1]->send(disconnect_packet);
                     players[1]->disconnect();
                     std::cout << "player disconnected, game deleted\n";
-                    return false;
-                }  else {
-                    std::cout << "sended for creator";
                     return true;
+                }  else {
+                    std::cout << "sended for creator\n";
+                    return false;
                 }
             }
         }
@@ -149,6 +146,7 @@ bool playtable::send_data() {
        //     }
        // }
     }
+    return false;
 }
 bool playtable::check_time() {
     time_t this_time;

@@ -8,7 +8,6 @@
 #include <utility>
 #include <memory>
 #include <thread>
-#include <iostream>
 #include "Button.hpp"
 #include "TableStone.hpp"
 #include "for_mainmenu.hpp"
