@@ -1,4 +1,5 @@
 #include "for_mainmenu.hpp"
+
 std::pair<int, int> return_stone_coordinate(const std::pair<int, int>& _pair, int& tablesize) {
 				int x;
 				int y;
