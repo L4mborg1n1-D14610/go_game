@@ -1,8 +1,7 @@
 # Сетевая игра Go с графическим интерфейсом
 
 сборка для [**ветви**](https://github.com/vasiliykadikov/go_game/tree/Go_forCI)
-
-[![Build Status](https://app.travis-ci.com/L4mborg1n1-D14610/go_checks.svg?branch=master)
+![Build Status](https://app.travis-ci.com/L4mborg1n1-D14610/go_checks.svg?branch=master)
 
 Отличия из-за того, что сборка для **linux**
 
