@@ -2,7 +2,7 @@
 
 сборка для [**ветви**](https://github.com/vasiliykadikov/go_game/tree/Go_forCI)
 
-[![Build Status](https://travis-ci.com/vasiliykadikov/go_game.svg?branch=Go_forCI)](https://travis-ci.com/vasiliykadikov/go_game)
+[![Build Status](https://app.travis-ci.com/L4mborg1n1-D14610/go_checks.svg?branch=master)
 
 Отличия из-за того, что сборка для **linux**
 
